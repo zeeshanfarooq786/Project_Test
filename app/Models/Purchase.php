@@ -8,7 +8,7 @@ class Purchase extends Model
 {
     protected $fillable = ['total'];
 
-    public function purchaseItems() {
+    public function items() {
         return $this->hasMany(PurchaseItem::class);
     }
 }
