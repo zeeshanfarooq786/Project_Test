@@ -70,7 +70,7 @@ A professional inventory purchase management system built with **Laravel 11**, *
 
     ```bash
 
-    cp .env.example .env
+    copy .env.example .env
 
     php artisan key:generate
 
