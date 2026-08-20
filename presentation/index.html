@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Documented Pakistan — Policy Presentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --forest: #0b3d2e;
+      --deep: #071c16;
+      --pine: #14532d;
+      --gold: #c9a227;
+      --gold-soft: #e8d48b;
+      --cream: #f6f1e6;
+      --sand: #e7dcc8;
+      --ink: #14201b;
+      --muted: #5c6b64;
+      --white: #fffdf8;
+      --danger: #9b2c2c;
+      --danger-soft: #f8e4e0;
+      --ok: #1b7a4a;
+      --card: rgba(255, 253, 248, 0.08);
+      --line: rgba(201, 162, 39, 0.45);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      background: #050e0b;
+      color: var(--ink);
+      font-family: Outfit, system-ui, sans-serif;
+      overflow: hidden;
+    }
+    .stage {
+      height: 100vh;
+      width: 100vw;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(201,162,39,.12), transparent 50%),
+        radial-gradient(900px 500px at 110% 110%, rgba(20,83,45,.35), transparent 45%),
+        #050e0b;
+    }
+    .frame {
+      width: min(96vw, calc(96vh * 16 / 9));
+      height: min(96vh, calc(96vw * 9 / 16));
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.45);
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 48px 56px 56px;
+      display: none;
+      background: var(--cream);
+      color: var(--ink);
+    }
+    .slide.active { display: flex; flex-direction: column; }
+    .slide.dark {
+      background:
+        linear-gradient(160deg, #0a241c 0%, #071c16 46%, #0c3326 100%);
+      color: var(--cream);
+    }
+    .kicker {
+      font-size: 13px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .dark .kicker { color: var(--gold-soft); }
+    h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 650; letter-spacing: -.02em; }
+    h1 { font-size: 58px; line-height: 1.05; max-width: 16ch; }
+    h2 { font-size: 38px; line-height: 1.12; }
+    h3 { font-size: 20px; }
+    p, li { font-size: 18px; line-height: 1.45; }
+    .lead { font-size: 22px; max-width: 46ch; color: var(--muted); font-weight: 400; }
+    .dark .lead { color: rgba(246,241,230,.78); }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    .brand {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .mark {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: conic-gradient(from 210deg, var(--forest), var(--gold), var(--forest));
+      box-shadow: 0 0 0 3px rgba(201,162,39,.18);
+    }
+    .dark .brand { color: rgba(246,241,230,.6); }
+    .footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 18px;
+    }
+    .dark .footer { color: rgba(246,241,230,.45); }
+    .progress {
+      position: absolute;
+      left: 0; right: 0; bottom: 0; height: 4px;
+      background: rgba(0,0,0,.12);
+      z-index: 5;
+    }
+    .progress > span {
+      display: block; height: 100%; width: 0;
+      background: linear-gradient(90deg, var(--gold), #f0d36a);
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .card {
+      background: #fff;
+      border: 1px solid rgba(11,61,46,.08);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(20,32,27,.05);
+    }
+    .dark .card {
+      background: var(--card);
+      border: 1px solid rgba(232,212,139,.16);
+      box-shadow: none;
+    }
+    .stat {
+      font-family: Fraunces, serif;
+      font-size: 42px;
+      color: var(--forest);
+      line-height: 1;
+      margin: 8px 0 8px;
+    }
+    .dark .stat { color: var(--gold-soft); }
+    .stat small { font-size: 18px; }
+    .label { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-weight: 600; }
+    .dark .label { color: rgba(246,241,230,.55); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: rgba(201,162,39,.16);
+      color: #7a5d10;
+    }
+    .gold-rule {
+      width: 72px; height: 3px; background: var(--gold); margin: 18px 0 22px; border-radius: 99px;
+    }
+    .list { list-style: none; display: grid; gap: 12px; }
+    .list li {
+      padding-left: 22px;
+      position: relative;
+    }
+    .list li::before {
+      content: "";
+      position: absolute; left: 0; top: 9px;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold);
+    }
+    .tag {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .panel-danger { background: linear-gradient(180deg, #3a1515, #2a1010); }
+    .panel-ok { background: linear-gradient(180deg, #123528, #0d281e); }
+    .big-number {
+      font-family: Fraunces, serif;
+      font-size: 72px;
+      line-height: .9;
+      color: var(--gold);
+    }
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 390px;
+    }
+    .compare > div { padding: 28px 30px; }
+    .do { background: #123528; color: var(--cream); }
+    .dont { background: #3a1515; color: #f8e4e0; }
+    .hint {
+      position: absolute;
+      right: 18px; top: 14px;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(246,241,230,.4);
+      z-index: 6;
+    }
+    .path {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .path .step {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 16px;
+      border-top: 4px solid var(--gold);
+      min-height: 210px;
+    }
+    .n {
+      font-family: Fraunces, serif;
+      font-size: 28px;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .quote {
+      font-family: Fraunces, serif;
+      font-size: 30px;
+      line-height: 1.25;
+      max-width: 22ch;
+    }
+    .sources { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(11,61,46,.1);
+      vertical-align: top;
+    }
+    th { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+    .dark th, .dark td { border-bottom-color: rgba(255,255,255,.08); }
+    @media print {
+      html, body, .stage { background: #fff; height: auto; overflow: visible; }
+      .frame { width: 100%; height: auto; box-shadow: none; border-radius: 0; }
+      .slide { position: relative; display: flex !important; page-break-after: always; width: 13.333in; height: 7.5in; }
+      .hint, .progress { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hint">← → or click · F11 fullscreen</div>
+  <div class="stage">
+    <div class="frame" id="frame">
+
+      <!-- 1 COVER -->
+      <section class="slide dark active">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <div class="pill">Civic · Fiscal · Reform</div>
+        </div>
+        <p class="kicker">How a country becomes formal — and what it costs not to</p>
+        <div class="gold-rule"></div>
+        <h1>A Documented Pakistan</h1>
+        <p class="lead" style="margin-top:18px;">Tax compliance, a wider tax net, and a fairer economy: what it is, how we achieve it, who benefits, who is punished if the law is applied, and the problems we already live with by not doing it.</p>
+        <div class="footer">
+          <span>Policy presentation</span>
+          <span>For classroom / civic briefing use</span>
+        </div>
+      </section>
+
+      <!-- 2 WHY -->
+      <section class="slide">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">01 — The argument</span>
+        </div>
+        <h2>Pakistan does not have a revenue problem first.<br>It has a documentation problem.</h2>
+        <div class="gold-rule"></div>
+        <div class="grid-2" style="flex:1;">
+          <div>
+            <p class="lead">A documented economy means sales, salaries, property, imports and bank flows are visible to the state — so tax can be collected fairly, credit can be given honestly, and policy can be based on facts rather than guesses.</p>
+            <ul class="list" style="margin-top:22px;">
+              <li>The salaried class and a thin layer of companies already pay.</li>
+              <li>A large share of retail, real estate, agriculture wealth and cash trade does not.</li>
+              <li>Governments then raise rates on the visible few, which pushes more activity underground.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="tag">This briefing answers four questions</p>
+            <ol class="list" style="margin-top:14px; counter-reset:q;">
+              <li>How can Pakistan actually achieve documentation?</li>
+              <li>What are the benefits if we do?</li>
+              <li>What punishment applies if a person does not comply — and if the law is enforced?</li>
+              <li>What problems are we already facing by not doing this?</li>
+            </ol>
+            <p style="margin-top:18px; font-size:15px; color:var(--muted);">The extra “Pakistan complete picture” slide later in this deck puts all four answers on one page.</p>
+          </div>
+        </div>
+        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
+      </section>
+
+      <!-- 3 NUMBERS -->
+      <section class="slide">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">02 — The gap</span>
+        </div>
+        <h2>The documentation gap, in numbers</h2>
+        <div class="gold-rule"></div>
+        <div class="grid-4">
+          <div class="card">
+            <p class="label">Population</p>
+            <p class="stat">~240<small>m</small></p>
+            <p>People living in the economy that must be financed.</p>
+          </div>
+          <div class="card">
+            <p class="label">Workforce</p>
+            <p class="stat">~85<small>m</small></p>
+            <p>People earning. Most are outside the income-tax net.</p>
+          </div>
+          <div class="card">
+            <p class="label">Active return filers</p>
+            <p class="stat">~2.5<small>m</small></p>
+            <p>Roughly 3 in 100 workers file a meaningful return.</p>
+          </div>
+          <div class="card">
+            <p class="label">Informal economy</p>
+            <p class="stat">35–40<small>%</small></p>
+            <p>Share of GDP that sits outside proper books, POS and returns.</p>
+          </div>
+        </div>
+        <div class="grid-3" style="margin-top:18px;">
+          <div class="card">
+            <p class="label">FBR collection FY2026</p>
+            <p class="stat" style="font-size:32px;">Rs 13.01<small> tr</small></p>
+            <p>Record collection — still a narrow base, not a broad one.</p>
+          </div>
+          <div class="card">
+            <p class="label">FBR tax-to-GDP FY2026</p>
+            <p class="stat" style="font-size:32px;">10.3<small>%</small></p>
+            <p>Peer developing states often sit in the mid-teens; OECD around one-third of GDP.</p>
+          </div>
+          <div class="card">
+            <p class="label">Registered filers (Jun 2025)</p>
+            <p class="stat" style="font-size:32px;">7.2<small>m</small></p>
+            <p>Registration rose. Active, honest filing did not rise at the same pace.</p>
+          </div>
+        </div>
+        <div class="footer"><span>Sources: Finance Division Jul 2026; FBR briefings 2025; The News FY27 analysis</span><span></span></div>
+      </section>
+
+      <!-- 4 WHAT IT MEANS -->
+      <section class="slide">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">03 — Definition</span>
+        </div>
+        <h2>What “doing this” actually means</h2>
+        <div class="gold-rule"></div>
+        <div class="grid-3" style="flex:1;">
+          <div class="card">
+            <p class="tag">01 · Citizen</p>
+            <h3>File, declare, stay on the ATL</h3>
+            <p style="margin-top:10px;">Every person with taxable income files an income-tax return on time, stays on the Active Taxpayer List, and can explain large purchases from declared wealth.</p>
+          </div>
+          <div class="card">
+            <p class="tag">02 · Business</p>
+            <h3>Books, invoices, banked sales</h3>
+            <p style="margin-top:10px;">Shops and firms issue invoices, keep purchase and sales records, use bank or digital payment where required, and — if notified — connect POS / e-invoicing to FBR.</p>
+          </div>
+          <div class="card">
+            <p class="tag">03 · State</p>
+            <h3>Simple rules, equal enforcement</h3>
+            <p style="margin-top:10px;">The state makes compliance cheaper than hiding, stops harassing honest filers, and uses data (utilities, property, imports, banking) instead of raids as the default tool.</p>
+          </div>
+        </div>
+        <p class="lead" style="margin-top:18px;">Documentation is not “more tax on the same people.” It is bringing hidden turnover into the light so rates on the documented minority can eventually come down.</p>
+        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
+      </section>
+
+      <!-- 5 HOW -->
+      <section class="slide">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">04 — How we achieve this</span>
+        </div>
+        <h2>How Pakistan can achieve a documented economy</h2>
+        <div class="gold-rule"></div>
+        <div class="path">
+          <div class="step">
+            <span class="n">01</span>
+            <h3>Make filing easy</h3>
+            <p style="margin-top:8px; font-size:16px;">IRIS, mobile apps, Urdu/regional forms, tax facilitation centres. The 2026 Fixed Tax Asaan Scheme (1% of turnover, minimum Rs 25,000, sales up to Rs 200m) is built for this.</p>
+          </div>
+          <div class="step">
+            <span class="n">02</span>
+            <h3>Reward the filer</h3>
+            <p style="margin-top:8px; font-size:16px;">Lowest withholding rates, refunds, bank accounts, property and vehicle access, government contracts and cheaper credit must belong to people on the ATL.</p>
+          </div>
+          <div class="step">
+            <span class="n">03</span>
+            <h3>See the transaction</h3>
+            <p style="margin-top:8px; font-size:16px;">POS and e-invoicing for large retail, restaurants and notified sectors; NADRA / land / customs / bank data matched to returns so lifestyle and income cannot stay strangers.</p>
+          </div>
+          <div class="step">
+            <span class="n">04</span>
+            <h3>Protect the honest</h3>
+            <p style="margin-top:8px; font-size:16px;">No random shop raids on scheme participants, association-based dispute resolution, and a real end to “audit as harassment.” Fear is why Tajir Dost failed.</p>
+          </div>
+          <div class="step">
+            <span class="n">05</span>
+            <h3>Enforce the big leaks</h3>
+            <p style="margin-top:8px; font-size:16px;">Apply penalties, Section 114C high-value blocks, and sealing powers on persistent non-filers and fake invoicing — not on the smallest compliant trader.</p>
+          </div>
+        </div>
+        <div class="footer"><span>Path: simplify → reward → digitise → protect → punish the leak, not the compliant</span><span></span></div>
+      </section>
+
+      <!-- 6 BENEFITS -->
+      <section class="slide">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">05 — Benefits</span>
+        </div>
+        <h2>Benefits if Pakistan actually does this</h2>
+        <div class="gold-rule"></div>
+        <div class="grid-2">
+          <div class="card">
+            <p class="tag">For the country</p>
+            <ul class="list">
+              <li><strong>More revenue without crushing the same 2.5 million people</strong> — a wider base funds schools, hospitals, water and defence without a new IMF squeeze every cycle.</li>
+              <li><strong>Lower fiscal deficit and less debt interest</strong> — FY2026 already showed what a primary surplus can do; a broader base makes it lasting.</li>
+              <li><strong>Cheaper electricity and fewer circular-debt patches</strong> because subsidies can be targeted, not sprayed.</li>
+              <li><strong>Better policy</strong> — you cannot plan industry, exports or cities if half of GDP is a rumour.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="tag">For the citizen and the honest business</p>
+            <ul class="list">
+              <li><strong>Filer status / ATL:</strong> lowest withholding on property, cars, bank profit, dividends; refund of extra tax; ability to open normal bank accounts.</li>
+              <li><strong>Credit:</strong> documented sales are the passport to bank loans, export certification and government tenders.</li>
+              <li><strong>Fair competition:</strong> the shop that issues invoices stops losing to the shop that hides 40% of turnover.</li>
+              <li><strong>Dignity:</strong> a return is proof of contribution. It is also proof of income when you need a visa, a plot, or a court.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
+      </section>
+
+      <!-- 7 COMPLETE PICTURE — THE SLIDE THEY ASKED FOR -->
+      <section class="slide dark">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">06 — Complete Pakistan picture</span>
+        </div>
+        <h2 style="font-size:30px;">How we achieve this in Pakistan — benefits, punishments, and the cost of not doing it</h2>
+        <p style="opacity:.7; margin:8px 0 16px; font-size:15px;">One slide. Four answers. This is the civic choice in front of the country.</p>
+        <div class="grid-2" style="gap:14px; flex:1;">
+          <div class="card" style="padding:18px 20px;">
+            <p class="tag">A · How we achieve it</p>
+            <ul class="list" style="font-size:15px; gap:8px;">
+              <li>Every earner files; traders join Asaan Tax (1% turnover, min Rs 25,000) or the regular return.</li>
+              <li>Large retail / notified sectors live on FBR e-invoices and POS — no sale off-system.</li>
+              <li>Banks, land records, NADRA, customs and utilities talk to IRIS so lifestyle matches income.</li>
+              <li>The state cuts harassment, keeps rates predictable, and spends visibly so people see a return on tax.</li>
+              <li>Provinces document urban property and agricultural wealth instead of leaving the federal salaried class alone in the net.</li>
+            </ul>
+          </div>
+          <div class="card" style="padding:18px 20px;">
+            <p class="tag">B · Benefits if we do it</p>
+            <ul class="list" style="font-size:15px; gap:8px;">
+              <li>Wider tax base → room to lower rates on those already paying.</li>
+              <li>ATL benefits: cheaper withholding, refunds, cars, plots, bank accounts, tenders.</li>
+              <li>Banks can lend against real books; investment and jobs follow documentation.</li>
+              <li>State can fund education, health, water and climate without repeating debt crises.</li>
+              <li>Informal 35–40% of GDP slowly becomes countable, taxable, and financeable.</li>
+            </ul>
+          </div>
+          <div class="card" style="padding:18px 20px; background:rgba(155,44,44,.18); border-color:rgba(248,180,180,.25);">
+            <p class="tag">C · Punishment if one does not apply / if the law is applied</p>
+            <ul class="list" style="font-size:15px; gap:8px;">
+              <li><strong>Non-filer:</strong> 2–4× withholding on banks, property, cars, dividends; no ordinary new bank account; no refund.</li>
+              <li><strong>Late filer:</strong> daily default penalty + ATL surcharge (individuals Rs 25,000 in 2026-27) to get back on the list.</li>
+              <li><strong>Concealment / false particulars:</strong> penalty raised to <strong>Rs 1 million</strong> (Finance Bill 2026) plus tax evaded.</li>
+              <li><strong>No records on audit:</strong> Rs 100,000 / 200,000 / 300,000 by notice. Failure to withhold: Rs 500,000; company officers personally Rs 500,000.</li>
+              <li><strong>Section 114C</strong> (in law; gazette notification still pending): blocks cars over Rs 7m, homes over Rs 50m, commercial property over Rs 100m, securities over Rs 50m/year, cash out over Rs 100m/year unless resources are declared at 130% of the deal.</li>
+              <li>Persistent default: higher fines and power to <strong>seal business premises</strong>.</li>
+            </ul>
+          </div>
+          <div class="card" style="padding:18px 20px; background:rgba(201,162,39,.08);">
+            <p class="tag">D · Problems we face by not doing this</p>
+            <ul class="list" style="font-size:15px; gap:8px;">
+              <li>The documented minority is over-taxed; the undocumented majority is invisible — a justice failure, not only a fiscal one.</li>
+              <li>Every budget becomes an IMF negotiation because the base is too small for the state’s bills.</li>
+              <li>Cash, smuggling and benami property hide crime, terror finance and elite tax evasion in the same fog.</li>
+              <li>Honest businesses cannot compete; talent leaves; investment stays short-term and speculative.</li>
+              <li>No data means bad schools, leaking power, unplanned cities, and subsidies that never reach the poor they were meant for.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>The complete civic slide</span><span>Apply · Benefit · Or pay the penalty — and the country pays either way</span></div>
+      </section>
+
+      <!-- 8 PUNISHMENT DETAIL -->
+      <section class="slide">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">07 — Punishment if applied</span>
+        </div>
+        <h2>What the law does to you if you do not apply</h2>
+        <div class="gold-rule"></div>
+        <table>
+          <thead>
+            <tr>
+              <th>If you…</th>
+              <th>Status</th>
+              <th>What hits you</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>File on time and stay truthful</td>
+              <td><strong>Active filer (ATL)</strong></td>
+              <td>Lowest withholding; refunds allowed; full economic access; still must keep books.</td>
+            </tr>
+            <tr>
+              <td>File after the deadline</td>
+              <td><strong>Late filer</strong></td>
+              <td>Daily penalty (Finance Bill 2026 proposed a sharp increase, including Rs 2,000/day in some sales-tax late cases). ATL surcharge to return to the list (Rs 25,000 for individuals, 2026-27).</td>
+            </tr>
+            <tr>
+              <td>Never file</td>
+              <td><strong>Non-filer</strong></td>
+              <td>2–4× withholding on almost every documented transaction. New bank accounts largely blocked. No refund. Highest friction on property and vehicles.</td>
+            </tr>
+            <tr>
+              <td>Hide income or file false details</td>
+              <td><strong>Evader</strong></td>
+              <td>Penalty up to <strong>Rs 1,000,000</strong> plus the tax evaded. Repeat behaviour can go higher. Criminal provisions remain available for tax fraud.</td>
+            </tr>
+            <tr>
+              <td>Ignore audit notices / don’t withhold</td>
+              <td><strong>Defaulter</strong></td>
+              <td>Record penalties Rs 100k–300k; withholding failure Rs 500,000; company principals personally Rs 500,000. Premises can be sealed after continued default.</td>
+            </tr>
+            <tr>
+              <td>Try a large lifestyle with no declared wealth</td>
+              <td><strong>Ineligible person (s.114C)</strong></td>
+              <td>Once notified: cannot book a car above Rs 7m, a house above Rs 50m FMV, commercial property above Rs 100m, heavy securities, or pull Rs 100m+ cash in a year without 130% declared resources.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:14px; font-size:14px; color:var(--muted);">Note: Section 114C is already in the Income Tax Ordinance (Finance Act 2025) but, as of August 2026 reporting, the federal gazette date and operational rules were still pending. Withholding and ATL disadvantages already apply.</p>
+        <div class="footer"><span>Finance Bill 2026 · Income Tax Ordinance 2001 · FBR ATL rules</span><span></span></div>
+      </section>
+
+      <!-- 9 PROBLEMS -->
+      <section class="slide dark">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">08 — Cost of not doing this</span>
+        </div>
+        <h2>Problems we are already facing by not doing this</h2>
+        <div class="gold-rule"></div>
+        <div class="grid-3" style="flex:1;">
+          <div class="card">
+            <p class="big-number">01</p>
+            <h3 style="margin:10px 0;">A state that cannot pay for itself</h3>
+            <p style="margin-top:8px; opacity:.85;">Interest on old debt eats the budget. Development is residual. We borrow to run the government because too few people are on the books. That is why every “record collection” still feels like a crisis.</p>
+          </div>
+          <div class="card">
+            <p class="big-number">02</p>
+            <h3 style="margin:10px 0;">The salaried class as a hostage</h3>
+            <p style="margin-top:8px; opacity:.85;">Tax is deducted from the salary slip before the employee sees it. Retail, wholesale, real-estate flipping and cash professions often pay nothing comparable. People learn that honesty is expensive.</p>
+          </div>
+          <div class="card">
+            <p class="big-number">03</p>
+            <h3 style="margin:10px 0;">Fake competition</h3>
+            <p style="margin-top:8px; opacity:.85;">A documented factory paying payroll, GST and power at industrial rates cannot beat a cash competitor. Industry thins out. Imports and trading fill the gap. Jobs that should exist never appear.</p>
+          </div>
+          <div class="card">
+            <p class="big-number">04</p>
+            <h3 style="margin:10px 0;">Black money has a home</h3>
+            <p style="margin-top:8px; opacity:.85;">Undocumented plots, prize bonds, cash and under-invoiced imports are where corruption, smuggling and tax evasion hide. Without trails, courts and banks are guessing.</p>
+          </div>
+          <div class="card">
+            <p class="big-number">05</p>
+            <h3 style="margin:10px 0;">No credit, no scale</h3>
+            <p style="margin-top:8px; opacity:.85;">Banks will not lend against a notebook in a drawer. So firms stay small, families stay in the informal loop, and the country stays a trading economy instead of a producing one.</p>
+          </div>
+          <div class="card">
+            <p class="big-number">06</p>
+            <h3 style="margin:10px 0;">Trust collapse</h3>
+            <p style="margin-top:8px; opacity:.85;">Citizens say: “Why should I pay if the elite does not, and if my tax disappears?” The state says: “Why should I improve service if nobody pays?” Both are waiting. Both are wrong to wait.</p>
+          </div>
+        </div>
+        <div class="footer"><span>Not doing documentation is not neutral. It is a daily policy choice with victims.</span><span></span></div>
+      </section>
+
+      <!-- 10 WHO PAYS -->
+      <section class="slide">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">09 — Fairness</span>
+        </div>
+        <h2>Who pays today — and who should</h2>
+        <div class="gold-rule"></div>
+        <div class="grid-2" style="flex:1;">
+          <div class="card">
+            <p class="tag">Over-documented</p>
+            <h3>Salaried employees, large companies, importers at the port, formal banks</h3>
+            <ul class="list" style="margin-top:14px;">
+              <li>Cannot hide: withholding is automatic.</li>
+              <li>Face audits, payroll tax, sales tax, WWF/WPPF, and rising rates whenever the deficit yawns.</li>
+              <li>This is why “tax culture” speeches sound empty to a teacher or a software employee.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="tag">Under-documented</p>
+            <h3>Cash retail, parts of wholesale, speculators, some professional cash practices, much real-estate gain</h3>
+            <ul class="list" style="margin-top:14px;">
+              <li>About 4.2–4.4 million traders are the Asaan Tax target — most still outside a serious return.</li>
+              <li>High-value cars and houses are often bought without income that matches the price.</li>
+              <li>Agriculture income is provincial; urban agri-wealth and lifestyle often escape both federation and province.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="lead" style="margin-top:16px;">A just policy does not hunt the easy target. It documents the large leak, simplifies the small trader, and then lowers rates for everyone who stayed honest.</p>
+        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
+      </section>
+
+      <!-- 11 12 MONTH PATH -->
+      <section class="slide">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">10 — Practical path</span>
+        </div>
+        <h2>A 12-month path that can actually work</h2>
+        <div class="gold-rule"></div>
+        <div class="grid-3" style="flex:1;">
+          <div class="card">
+            <p class="tag">Citizens</p>
+            <h3>File this year. Stay on ATL.</h3>
+            <ul class="list" style="margin-top:12px; font-size:16px;">
+              <li>Create an IRIS account / FBR app login.</li>
+              <li>File even if income is modest — filer status is an asset.</li>
+              <li>Keep bank trails for rent, fees, and large buys.</li>
+              <li>Do not “save” tax by staying a non-filer: the extra withholding is usually larger than the tax due.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="tag">Traders &amp; SMEs</p>
+            <h3>Pick the simple door, then grow.</h3>
+            <ul class="list" style="margin-top:12px; font-size:16px;">
+              <li>If turnover ≤ Rs 200m: Fixed Tax Asaan Scheme — 1% of sales, minimum Rs 25,000, no routine POS/audit.</li>
+              <li>Keep a basic sales and purchase book anyway. Under-declaring now is a future raid.</li>
+              <li>If you scale past the scheme, integrate e-invoicing before FBR forces it.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <p class="tag">The state</p>
+            <h3>Stop repeating Tajir Dost.</h3>
+            <ul class="list" style="margin-top:12px; font-size:16px;">
+              <li>Honour the no-harassment promise on scheme shops.</li>
+              <li>Notify Section 114C with clear rules — then apply it to luxury leaks, not kiryana stores.</li>
+              <li>Publish where the extra rupee goes: schools, water, local hospitals.</li>
+              <li>Match property, cars and electricity with returns. Quiet data beats noisy raids.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
+      </section>
+
+      <!-- 12 DO VS DONT -->
+      <section class="slide dark" style="padding:0;">
+        <div class="compare">
+          <div class="do">
+            <p class="kicker">If we do this</p>
+            <h2 style="margin:16px 0 20px; font-size:34px;">A country that can see itself</h2>
+            <ul class="list">
+              <li>Tax base expands; rates on the salaried can be discussed downward in good faith.</li>
+              <li>IMF programmes become shorter and less humiliating because the numbers add up.</li>
+              <li>Banks finance factories, not only plots.</li>
+              <li>Luxury that cannot be explained is blocked at the registration desk.</li>
+              <li>A teacher and a trader stand in the same civic line: both documented, both served.</li>
+            </ul>
+          </div>
+          <div class="dont">
+            <p class="kicker">If we do not</p>
+            <h2 style="margin:16px 0 20px; font-size:34px;">The same cycle, more expensive</h2>
+            <ul class="list">
+              <li>Another budget of higher penalties on the same trapped base.</li>
+              <li>Capital and talent leave; remaining businesses stay informal on purpose.</li>
+              <li>Debt interest remains the largest “development” line.</li>
+              <li>Smog, water, schools and hospitals stay underfunded while cash houses rise in DHA.</li>
+              <li>The next generation inherits a state that still cannot count its own economy.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13 CLOSE -->
+      <section class="slide dark">
+        <div class="topbar">
+          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
+          <span class="kicker">Close</span>
+        </div>
+        <p class="quote">Documentation is not a tax. It is the decision that Pakistan will stop guessing — and stop punishing only the people it can already see.</p>
+        <div class="gold-rule"></div>
+        <div class="grid-3">
+          <div>
+            <p class="tag">Remember</p>
+            <p>~2.5 million active filers cannot finance 240 million lives. Broaden the base, then lower the rate.</p>
+          </div>
+          <div>
+            <p class="tag">Apply</p>
+            <p>File. Join Asaan Tax if you trade small. Keep books. The penalty for staying invisible is already more expensive than the tax.</p>
+          </div>
+          <div>
+            <p class="tag">Demand</p>
+            <p>Enforcement on the big leak, protection for the honest, and public proof that the rupee built a school, not a scandal.</p>
+          </div>
+        </div>
+        <p class="sources" style="margin-top:auto; padding-top:28px; color:rgba(246,241,230,.45);">
+          Figures and legal notes drawn from: Finance Division Monthly Economic Update (July 2026); FBR collection and filer briefings (FY2025–FY2026); The News Budget FY27 analysis (active filers / informal share); Dawn and PKRevenue reporting on Finance Bill 2026 penalties; Income Tax Ordinance s.114C (Finance Act 2025); Fixed Tax Asaan Scheme announcements (June 2026). Penalty amounts and notification dates can change — verify on FBR / gazette before relying for compliance.
+        </p>
+        <div class="footer"><span>A Documented Pakistan</span><span>End of briefing</span></div>
+      </section>
+
+    </div>
+    <div class="progress"><span id="bar"></span></div>
+  </div>
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    const bar = document.getElementById('bar');
+    let i = 0;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+      bar.style.width = ((i + 1) / slides.length * 100) + '%';
+      document.querySelectorAll('.footer span:last-child').forEach((el, idx) => {
+        if (el.closest('.slide') && !el.textContent.includes('End') && !el.textContent.includes('Apply')) {
+          /* keep custom footers */
+        }
+      });
+      slides.forEach((s, idx) => {
+        const f = s.querySelector('.footer span:last-child');
+        if (f && f.textContent === '') f.textContent = String(idx + 1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+      });
+    }
+    slides.forEach((s, idx) => {
+      const f = s.querySelector('.footer span:last-child');
+      if (f && f.textContent === '') f.textContent = String(idx + 1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+    });
+    show(0);
+    function next() { show(i + 1); }
+    function prev() { show(i - 1); }
+    document.getElementById('frame').addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      next();
+    });
+    window.addEventListener('keydown', (e) => {
+      if (['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); next(); }
+      if (['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
+      if (e.key === 'Home') { e.preventDefault(); show(0); }
+      if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+    });
+  </script>
+</body>
+</html>
