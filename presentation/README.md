@@ -1,32 +1,38 @@
-# A Documented Pakistan — Slide Deck
+# Ring Green Pakistan — 4th Session
 
-Policy presentation on **how Pakistan can build a documented economy**, including benefits, legal penalties, and the cost of remaining informal.
+**German Waste Management: Mülltrennung & Pfand**  
+18-slide infographic deck for classroom / club presentation.
 
-## How to present
+## Present
 
-1. **Browser (best design):** open `index.html` in Chrome or Edge, then press **F11** for fullscreen.
-   - `→` `Space` `Click` — next slide
-   - `←` — previous slide
-   - `Home` / `End` — first / last slide
-2. **PowerPoint / Google Slides:** open `Pakistan_Documented_Economy.pptx`.
-3. **PDF:** in Chrome, open `index.html` → Print → Destination: Save as PDF → Layout: Landscape → Margins: None.
+1. Open `index.html` in Chrome or Edge → **F11** fullscreen.  
+   - `→` `Space` click = next · `←` = back · `Home` / `End` = first / last
+2. PowerPoint: `Ring_Green_Pakistan_Muelltrennung.pptx`
+3. PDF: Chrome print of `index.html` · Landscape · Margins none
 
-## Contents
+## Slide map
 
-| Slide | Title |
+| # | Slide |
 | --- | --- |
-| 01 | Title |
-| 02 | Why this briefing |
-| 03 | The documentation gap |
-| 04 | What a documented economy means |
-| 05 | How Pakistan can achieve this |
-| 06 | Benefits of doing it |
-| 07 | **Complete Pakistan picture** (how + benefits + punishment + cost of inaction) |
-| 08 | Punishments when the law is applied |
-| 09 | Problems we face by not doing this |
-| 10 | Who pays today |
-| 11 | A practical path for the next 12 months |
-| 12 | If we do this vs if we do not |
-| 13 | Close |
+| 01 | Welcome & title |
+| 02 | Germany’s Mülltrennung |
+| 03 | Blue bin — paper |
+| 04 | Yellow bin — packaging |
+| 05 | Brown bin — organic |
+| 06 | Gray bin — residual |
+| 07 | Glass containers |
+| 08 | Pfand deposit-return |
+| 09 | Apartment / shared duties |
+| 10 | German laws & fines |
+| 11 | 5-step waste journey |
+| 12 | Pakistan’s current waste reality |
+| 13 | How Pakistan can achieve this (4 phases) |
+| 14 | Benefits for Pakistan |
+| 15 | Problems if we do not apply this |
+| 16 | Proposed Pakistani fines & incentives |
+| 17 | Youth / Ring Green action checklist |
+| 18 | Thank you |
 
-Figures are drawn from FBR / Finance Division releases, Finance Act 2025, Finance Bill 2026, and published 2025–26 reporting. Laws and penalty amounts can change; confirm against the latest FBR notification before using this as legal advice.
+Slides 13–16 answer: how to achieve this in Pakistan, benefits, punishment if rules are applied, and the cost of not doing it.
+
+Regenerate PowerPoint: `python3 build_pptx.py`

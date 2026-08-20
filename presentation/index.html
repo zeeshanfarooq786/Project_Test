@@ -3,746 +3,649 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>A Documented Pakistan — Policy Presentation</title>
+  <title>Ring Green Pakistan · 4th Session — Mülltrennung &amp; Pfand</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --forest: #0b3d2e;
-      --deep: #071c16;
-      --pine: #14532d;
-      --gold: #c9a227;
-      --gold-soft: #e8d48b;
-      --cream: #f6f1e6;
-      --sand: #e7dcc8;
-      --ink: #14201b;
-      --muted: #5c6b64;
-      --white: #fffdf8;
-      --danger: #9b2c2c;
-      --danger-soft: #f8e4e0;
-      --ok: #1b7a4a;
-      --card: rgba(255, 253, 248, 0.08);
-      --line: rgba(201, 162, 39, 0.45);
+      --green: #2E7D32;
+      --green-d: #1B5E20;
+      --navy: #0D47A1;
+      --navy-d: #0A3A85;
+      --bg: #F8F9FA;
+      --yellow: #FBC02D;
+      --ink: #212121;
+      --muted: #5F6B6E;
+      --card: #FFFFFF;
+      --blue-bin: #1565C0;
+      --yellow-bin: #F9A825;
+      --brown-bin: #6D4C41;
+      --gray-bin: #455A64;
+      --danger: #C62828;
+      --ok: #2E7D32;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      height: 100%;
-      background: #050e0b;
-      color: var(--ink);
-      font-family: Outfit, system-ui, sans-serif;
-      overflow: hidden;
-    }
-    .stage {
-      height: 100vh;
-      width: 100vw;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(201,162,39,.12), transparent 50%),
-        radial-gradient(900px 500px at 110% 110%, rgba(20,83,45,.35), transparent 45%),
-        #050e0b;
-    }
-    .frame {
-      width: min(96vw, calc(96vh * 16 / 9));
-      height: min(96vh, calc(96vw * 9 / 16));
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,.45);
-    }
-    .slide {
-      position: absolute;
-      inset: 0;
-      padding: 48px 56px 56px;
-      display: none;
-      background: var(--cream);
-      color: var(--ink);
-    }
+    html, body { height: 100%; background: #0b1a12; font-family: "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ink); overflow: hidden; }
+    h1, h2, h3, .display { font-family: Sora, sans-serif; letter-spacing: -.03em; }
+    .stage { height: 100vh; width: 100vw; display: grid; place-items: center; background: radial-gradient(900px 500px at 80% -10%, rgba(46,125,50,.25), transparent 50%), #0b1a12; }
+    .frame { width: min(96vw, calc(96vh * 16 / 9)); height: min(96vh, calc(96vw * 9 / 16)); position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 28px 80px rgba(0,0,0,.45); background: var(--bg); }
+    .slide { position: absolute; inset: 0; display: none; padding: 28px 36px 40px; background: var(--bg); }
     .slide.active { display: flex; flex-direction: column; }
-    .slide.dark {
-      background:
-        linear-gradient(160deg, #0a241c 0%, #071c16 46%, #0c3326 100%);
-      color: var(--cream);
-    }
-    .kicker {
-      font-size: 13px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-    }
-    .dark .kicker { color: var(--gold-soft); }
-    h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 650; letter-spacing: -.02em; }
-    h1 { font-size: 58px; line-height: 1.05; max-width: 16ch; }
-    h2 { font-size: 38px; line-height: 1.12; }
-    h3 { font-size: 20px; }
-    p, li { font-size: 18px; line-height: 1.45; }
-    .lead { font-size: 22px; max-width: 46ch; color: var(--muted); font-weight: 400; }
-    .dark .lead { color: rgba(246,241,230,.78); }
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 28px;
-    }
-    .brand {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      font-size: 12px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 600;
-    }
-    .mark {
-      width: 18px; height: 18px; border-radius: 50%;
-      background: conic-gradient(from 210deg, var(--forest), var(--gold), var(--forest));
-      box-shadow: 0 0 0 3px rgba(201,162,39,.18);
-    }
-    .dark .brand { color: rgba(246,241,230,.6); }
-    .footer {
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-top: 18px;
-    }
-    .dark .footer { color: rgba(246,241,230,.45); }
-    .progress {
-      position: absolute;
-      left: 0; right: 0; bottom: 0; height: 4px;
-      background: rgba(0,0,0,.12);
-      z-index: 5;
-    }
-    .progress > span {
-      display: block; height: 100%; width: 0;
-      background: linear-gradient(90deg, var(--gold), #f0d36a);
-    }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .card {
-      background: #fff;
-      border: 1px solid rgba(11,61,46,.08);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 10px 30px rgba(20,32,27,.05);
-    }
-    .dark .card {
-      background: var(--card);
-      border: 1px solid rgba(232,212,139,.16);
-      box-shadow: none;
-    }
-    .stat {
-      font-family: Fraunces, serif;
-      font-size: 42px;
-      color: var(--forest);
-      line-height: 1;
-      margin: 8px 0 8px;
-    }
-    .dark .stat { color: var(--gold-soft); }
+    .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+    .logo { width: 34px; height: 34px; }
+    .chip { background: var(--navy); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; }
+    h1 { font-size: 42px; line-height: 1.05; }
+    h2 { font-size: 28px; line-height: 1.12; }
+    h3 { font-size: 16px; }
+    p, li { font-size: 15px; line-height: 1.4; }
+    .muted { color: var(--muted); }
+    .row { display: grid; gap: 14px; }
+    .c2 { grid-template-columns: 1fr 1fr; }
+    .c3 { grid-template-columns: 1fr 1fr 1fr; }
+    .c4 { grid-template-columns: repeat(4, 1fr); }
+    .c5 { grid-template-columns: repeat(5, 1fr); }
+    .card { background: var(--card); border-radius: 16px; padding: 16px 18px; box-shadow: 0 8px 24px rgba(33,33,33,.06); border: 1px solid rgba(33,33,33,.05); }
+    .stat { font-family: Sora, sans-serif; font-size: 40px; font-weight: 800; line-height: .95; color: var(--green); }
     .stat small { font-size: 18px; }
-    .label { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-weight: 600; }
-    .dark .label { color: rgba(246,241,230,.55); }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-weight: 600;
-      background: rgba(201,162,39,.16);
-      color: #7a5d10;
-    }
-    .gold-rule {
-      width: 72px; height: 3px; background: var(--gold); margin: 18px 0 22px; border-radius: 99px;
-    }
-    .list { list-style: none; display: grid; gap: 12px; }
-    .list li {
-      padding-left: 22px;
-      position: relative;
-    }
-    .list li::before {
-      content: "";
-      position: absolute; left: 0; top: 9px;
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold);
-    }
-    .tag {
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .panel-danger { background: linear-gradient(180deg, #3a1515, #2a1010); }
-    .panel-ok { background: linear-gradient(180deg, #123528, #0d281e); }
-    .big-number {
-      font-family: Fraunces, serif;
-      font-size: 72px;
-      line-height: .9;
-      color: var(--gold);
-    }
-    .compare {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-radius: 20px;
-      overflow: hidden;
-      min-height: 390px;
-    }
-    .compare > div { padding: 28px 30px; }
-    .do { background: #123528; color: var(--cream); }
-    .dont { background: #3a1515; color: #f8e4e0; }
-    .hint {
-      position: absolute;
-      right: 18px; top: 14px;
-      font-size: 11px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: rgba(246,241,230,.4);
-      z-index: 6;
-    }
-    .path {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-      margin-top: 8px;
-    }
-    .path .step {
-      background: #fff;
-      border-radius: 16px;
-      padding: 18px 16px;
-      border-top: 4px solid var(--gold);
-      min-height: 210px;
-    }
-    .n {
-      font-family: Fraunces, serif;
-      font-size: 28px;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 8px;
-    }
-    .quote {
-      font-family: Fraunces, serif;
-      font-size: 30px;
-      line-height: 1.25;
-      max-width: 22ch;
-    }
-    .sources { font-size: 13px; color: var(--muted); line-height: 1.5; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 16px;
-    }
-    th, td {
-      text-align: left;
-      padding: 12px 10px;
-      border-bottom: 1px solid rgba(11,61,46,.1);
-      vertical-align: top;
-    }
-    th { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-    .dark th, .dark td { border-bottom-color: rgba(255,255,255,.08); }
+    .label { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .ok, .no { list-style: none; display: grid; gap: 7px; }
+    .ok li, .no li { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; font-weight: 600; }
+    .dot { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 11px; font-weight: 800; flex: 0 0 18px; margin-top: 1px; }
+    .ok .dot { background: var(--ok); }
+    .no .dot { background: var(--danger); }
+    .note { background: #FFF8E1; border-left: 5px solid var(--yellow); padding: 10px 12px; border-radius: 0 12px 12px 0; font-size: 13.5px; font-weight: 600; }
+    .photo { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; display: block; }
+    .ph { overflow: hidden; border-radius: 16px; position: relative; }
+    .ph .cap { position: absolute; left: 10px; bottom: 10px; background: rgba(13,71,161,.88); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 8px; border-radius: 8px; letter-spacing: .06em; text-transform: uppercase; }
+    .bin-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .bin-ico { width: 54px; height: 54px; }
+    .step { text-align: center; padding: 14px 10px; border-radius: 16px; background: #fff; border-top: 5px solid var(--green); box-shadow: 0 8px 20px rgba(0,0,0,.05); min-height: 210px; }
+    .n { width: 32px; height: 32px; margin: 0 auto 8px; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 14px; }
+    .flow { display: flex; align-items: stretch; gap: 8px; }
+    .flow .node { flex: 1; background: #fff; border-radius: 14px; padding: 14px 12px; text-align: center; box-shadow: 0 8px 18px rgba(0,0,0,.05); }
+    .flow .arr { align-self: center; color: var(--green); font-size: 22px; font-weight: 800; }
+    .footer { margin-top: auto; display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding-top: 10px; }
+    .progress { position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: #E0E0E0; z-index: 4; }
+    .progress > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--green), var(--yellow)); }
+    .hint { position: absolute; right: 14px; top: 10px; z-index: 6; color: rgba(255,255,255,.45); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    .hero { position: relative; border-radius: 18px; overflow: hidden; flex: 1; min-height: 0; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; }
+    .hero .veil { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,27,18,.82) 0%, rgba(13,27,18,.35) 55%, rgba(13,27,18,.15) 100%); }
+    .hero .copy { position: absolute; inset: 0; padding: 28px 32px; color: #fff; display: flex; flex-direction: column; }
+    .warn { background: #FFF3F3; border: 1px solid #FFCDD2; }
+    .split-photo { display: grid; grid-template-columns: 1.05fr .95fr; gap: 16px; flex: 1; min-height: 0; }
+    .checkgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: 1; }
+    .rate { background: var(--navy); color: #fff; border-radius: 16px; padding: 16px; }
+    .rate .stat { color: var(--yellow); }
+    .tag { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); margin-bottom: 6px; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; background: #E8F5E9; color: var(--green-d); font-weight: 800; font-size: 11px; padding: 4px 8px; border-radius: 999px; letter-spacing: .08em; text-transform: uppercase; }
     @media print {
       html, body, .stage { background: #fff; height: auto; overflow: visible; }
-      .frame { width: 100%; height: auto; box-shadow: none; border-radius: 0; }
+      .frame { width: 13.333in; height: auto; box-shadow: none; border-radius: 0; }
       .slide { position: relative; display: flex !important; page-break-after: always; width: 13.333in; height: 7.5in; }
       .hint, .progress { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="hint">← → or click · F11 fullscreen</div>
+  <div class="hint">← → · F11</div>
   <div class="stage">
     <div class="frame" id="frame">
 
-      <!-- 1 COVER -->
-      <section class="slide dark active">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <div class="pill">Civic · Fiscal · Reform</div>
+      <!-- 1 TITLE -->
+      <section class="slide active" style="padding:18px;">
+        <div class="top">
+          <div class="brand">
+            <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#2E7D32"/><path d="M18 36c8-14 20-18 28-10-10 2-16 8-16 16 8-4 16-2 22 4-10 8-24 8-34-10z" fill="#FBC02D"/><circle cx="26" cy="24" r="4" fill="#fff"/></svg>
+            Ring Green Pakistan
+          </div>
+          <div class="chip">4th Session</div>
         </div>
-        <p class="kicker">How a country becomes formal — and what it costs not to</p>
-        <div class="gold-rule"></div>
-        <h1>A Documented Pakistan</h1>
-        <p class="lead" style="margin-top:18px;">Tax compliance, a wider tax net, and a fairer economy: what it is, how we achieve it, who benefits, who is punished if the law is applied, and the problems we already live with by not doing it.</p>
-        <div class="footer">
-          <span>Policy presentation</span>
-          <span>For classroom / civic briefing use</span>
+        <div class="hero">
+          <img src="assets/title-hero.jpg" alt="Green Pakistan with urban recycling" />
+          <div class="veil"></div>
+          <div class="copy">
+            <p class="pill" style="background:rgba(251,192,45,.2); color:#FBC02D; width:max-content;">Mülltrennung &amp; Pfand</p>
+            <h1 style="font-size:40px; max-width:16ch; margin:10px 0 8px; color:#fff;">German Waste Management System</h1>
+            <p style="max-width:46ch; color:#E8F5E9; font-size:16px;">Welcome. Today we learn how Germany sorts waste as a resource — and how Pakistan can adapt the same discipline at home, in streets, and in law.</p>
+            <div class="row c3" style="margin-top:auto; max-width:820px;">
+              <div class="card" style="background:rgba(255,255,255,.12); color:#fff; border:0;">
+                <p class="label" style="color:#FBC02D;">Objective 01</p>
+                <p style="font-weight:700; margin-top:4px;">Understand every German bin + Pfand loop</p>
+              </div>
+              <div class="card" style="background:rgba(255,255,255,.12); color:#fff; border:0;">
+                <p class="label" style="color:#FBC02D;">Objective 02</p>
+                <p style="font-weight:700; margin-top:4px;">Map a 4-phase Pakistan adaptation roadmap</p>
+              </div>
+              <div class="card" style="background:rgba(255,255,255,.12); color:#fff; border:0;">
+                <p class="label" style="color:#FBC02D;">Speaker</p>
+                <p style="font-weight:700; margin-top:4px;">Ring Green Pakistan · Session Facilitators</p>
+              </div>
+            </div>
+          </div>
         </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
       </section>
 
-      <!-- 2 WHY -->
+      <!-- 2 INTRO -->
       <section class="slide">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">01 — The argument</span>
+        <div class="top">
+          <div class="brand">Mülltrennung — why Germany leads</div>
+          <div class="chip">02 / 18</div>
         </div>
-        <h2>Pakistan does not have a revenue problem first.<br>It has a documentation problem.</h2>
-        <div class="gold-rule"></div>
-        <div class="grid-2" style="flex:1;">
+        <h2>Germany treats waste as a resource — not as leftover dirt</h2>
+        <div class="split-photo" style="margin-top:12px;">
+          <div class="row" style="grid-template-rows: auto 1fr; min-height:0;">
+            <div class="row c2">
+              <div class="card">
+                <p class="stat">69%<small>+</small></p>
+                <p class="label">Municipal waste recycled</p>
+                <p class="muted" style="margin-top:6px;">Europe’s recycling leader by household discipline, not slogans.</p>
+              </div>
+              <div class="card">
+                <p class="stat">98<small>%</small></p>
+                <p class="label">Pfand bottle return</p>
+                <p class="muted" style="margin-top:6px;">Deposit-refund makes returning a bottle more natural than throwing it.</p>
+              </div>
+            </div>
+            <div class="card">
+              <p class="tag">The core philosophy</p>
+              <ul class="ok">
+                <li><span class="dot">1</span> Waste is a raw material sitting in the wrong place.</li>
+                <li><span class="dot">2</span> Sorting is mandatory at home — the kitchen is the first factory.</li>
+                <li><span class="dot">3</span> Colour is the user interface: Blue / Yellow / Brown / Gray + Glass + Pfand.</li>
+                <li><span class="dot">4</span> The 4-bin RNO standard (plus glass points) keeps streams uncontaminated.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ph">
+            <img class="photo" src="assets/german-bins-street.jpg" alt="Color-coded German recycling bins on a sidewalk" />
+            <span class="cap">Color-coded curbside bins · Germany</span>
+          </div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 3 BLUE -->
+      <section class="slide">
+        <div class="top"><div class="brand">Blue bin · Papier</div><div class="chip">03 / 18</div></div>
+        <div class="bin-head">
+          <svg class="bin-ico" viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="8" rx="2" fill="#0D47A1"/><rect x="14" y="22" width="36" height="34" rx="3" fill="#1565C0"/><rect x="20" y="8" width="24" height="8" rx="2" fill="#90CAF9"/></svg>
           <div>
-            <p class="lead">A documented economy means sales, salaries, property, imports and bank flows are visible to the state — so tax can be collected fairly, credit can be given honestly, and policy can be based on facts rather than guesses.</p>
-            <ul class="list" style="margin-top:22px;">
-              <li>The salaried class and a thin layer of companies already pay.</li>
-              <li>A large share of retail, real estate, agriculture wealth and cash trade does not.</li>
-              <li>Governments then raise rates on the visible few, which pushes more activity underground.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <p class="tag">This briefing answers four questions</p>
-            <ol class="list" style="margin-top:14px; counter-reset:q;">
-              <li>How can Pakistan actually achieve documentation?</li>
-              <li>What are the benefits if we do?</li>
-              <li>What punishment applies if a person does not comply — and if the law is enforced?</li>
-              <li>What problems are we already facing by not doing this?</li>
-            </ol>
-            <p style="margin-top:18px; font-size:15px; color:var(--muted);">The extra “Pakistan complete picture” slide later in this deck puts all four answers on one page.</p>
+            <h2 style="color:var(--blue-bin);">Blue Bin — Paper &amp; Cardboard</h2>
+            <p class="muted">Clean fibre only. Grease and food kill the recycling loop.</p>
           </div>
         </div>
-        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
+        <div class="checkgrid">
+          <div class="card">
+            <p class="tag" style="color:var(--ok);">Allowed ✓</p>
+            <ul class="ok">
+              <li><span class="dot">✓</span> Clean paper &amp; newspapers</li>
+              <li><span class="dot">✓</span> Magazines &amp; catalogues</li>
+              <li><span class="dot">✓</span> Flattened cardboard boxes</li>
+              <li><span class="dot">✓</span> Envelopes (windows OK in most cities)</li>
+            </ul>
+          </div>
+          <div class="card warn">
+            <p class="tag" style="color:var(--danger);">Forbidden ✕</p>
+            <ul class="no">
+              <li><span class="dot">✕</span> Dirty pizza boxes (grease / cheese)</li>
+              <li><span class="dot">✕</span> Used tissues &amp; kitchen paper</li>
+              <li><span class="dot">✕</span> Waxed / coated paper</li>
+              <li><span class="dot">✕</span> Wet or food-stained fibre</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row c2" style="margin-top:12px; grid-template-columns: 1.2fr .8fr;">
+          <div class="note">Key rule: flatten every cardboard box. Volume, not weight, fills the communal bin. A flat box is a civic courtesy to the whole building.</div>
+          <div class="ph" style="height:110px;"><img class="photo" src="assets/blue-bin-paper.jpg" alt="Blue bin with clean paper" /></div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
       </section>
 
-      <!-- 3 NUMBERS -->
+      <!-- 4 YELLOW -->
       <section class="slide">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">02 — The gap</span>
-        </div>
-        <h2>The documentation gap, in numbers</h2>
-        <div class="gold-rule"></div>
-        <div class="grid-4">
-          <div class="card">
-            <p class="label">Population</p>
-            <p class="stat">~240<small>m</small></p>
-            <p>People living in the economy that must be financed.</p>
-          </div>
-          <div class="card">
-            <p class="label">Workforce</p>
-            <p class="stat">~85<small>m</small></p>
-            <p>People earning. Most are outside the income-tax net.</p>
-          </div>
-          <div class="card">
-            <p class="label">Active return filers</p>
-            <p class="stat">~2.5<small>m</small></p>
-            <p>Roughly 3 in 100 workers file a meaningful return.</p>
-          </div>
-          <div class="card">
-            <p class="label">Informal economy</p>
-            <p class="stat">35–40<small>%</small></p>
-            <p>Share of GDP that sits outside proper books, POS and returns.</p>
-          </div>
-        </div>
-        <div class="grid-3" style="margin-top:18px;">
-          <div class="card">
-            <p class="label">FBR collection FY2026</p>
-            <p class="stat" style="font-size:32px;">Rs 13.01<small> tr</small></p>
-            <p>Record collection — still a narrow base, not a broad one.</p>
-          </div>
-          <div class="card">
-            <p class="label">FBR tax-to-GDP FY2026</p>
-            <p class="stat" style="font-size:32px;">10.3<small>%</small></p>
-            <p>Peer developing states often sit in the mid-teens; OECD around one-third of GDP.</p>
-          </div>
-          <div class="card">
-            <p class="label">Registered filers (Jun 2025)</p>
-            <p class="stat" style="font-size:32px;">7.2<small>m</small></p>
-            <p>Registration rose. Active, honest filing did not rise at the same pace.</p>
-          </div>
-        </div>
-        <div class="footer"><span>Sources: Finance Division Jul 2026; FBR briefings 2025; The News FY27 analysis</span><span></span></div>
-      </section>
-
-      <!-- 4 WHAT IT MEANS -->
-      <section class="slide">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">03 — Definition</span>
-        </div>
-        <h2>What “doing this” actually means</h2>
-        <div class="gold-rule"></div>
-        <div class="grid-3" style="flex:1;">
-          <div class="card">
-            <p class="tag">01 · Citizen</p>
-            <h3>File, declare, stay on the ATL</h3>
-            <p style="margin-top:10px;">Every person with taxable income files an income-tax return on time, stays on the Active Taxpayer List, and can explain large purchases from declared wealth.</p>
-          </div>
-          <div class="card">
-            <p class="tag">02 · Business</p>
-            <h3>Books, invoices, banked sales</h3>
-            <p style="margin-top:10px;">Shops and firms issue invoices, keep purchase and sales records, use bank or digital payment where required, and — if notified — connect POS / e-invoicing to FBR.</p>
-          </div>
-          <div class="card">
-            <p class="tag">03 · State</p>
-            <h3>Simple rules, equal enforcement</h3>
-            <p style="margin-top:10px;">The state makes compliance cheaper than hiding, stops harassing honest filers, and uses data (utilities, property, imports, banking) instead of raids as the default tool.</p>
-          </div>
-        </div>
-        <p class="lead" style="margin-top:18px;">Documentation is not “more tax on the same people.” It is bringing hidden turnover into the light so rates on the documented minority can eventually come down.</p>
-        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
-      </section>
-
-      <!-- 5 HOW -->
-      <section class="slide">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">04 — How we achieve this</span>
-        </div>
-        <h2>How Pakistan can achieve a documented economy</h2>
-        <div class="gold-rule"></div>
-        <div class="path">
-          <div class="step">
-            <span class="n">01</span>
-            <h3>Make filing easy</h3>
-            <p style="margin-top:8px; font-size:16px;">IRIS, mobile apps, Urdu/regional forms, tax facilitation centres. The 2026 Fixed Tax Asaan Scheme (1% of turnover, minimum Rs 25,000, sales up to Rs 200m) is built for this.</p>
-          </div>
-          <div class="step">
-            <span class="n">02</span>
-            <h3>Reward the filer</h3>
-            <p style="margin-top:8px; font-size:16px;">Lowest withholding rates, refunds, bank accounts, property and vehicle access, government contracts and cheaper credit must belong to people on the ATL.</p>
-          </div>
-          <div class="step">
-            <span class="n">03</span>
-            <h3>See the transaction</h3>
-            <p style="margin-top:8px; font-size:16px;">POS and e-invoicing for large retail, restaurants and notified sectors; NADRA / land / customs / bank data matched to returns so lifestyle and income cannot stay strangers.</p>
-          </div>
-          <div class="step">
-            <span class="n">04</span>
-            <h3>Protect the honest</h3>
-            <p style="margin-top:8px; font-size:16px;">No random shop raids on scheme participants, association-based dispute resolution, and a real end to “audit as harassment.” Fear is why Tajir Dost failed.</p>
-          </div>
-          <div class="step">
-            <span class="n">05</span>
-            <h3>Enforce the big leaks</h3>
-            <p style="margin-top:8px; font-size:16px;">Apply penalties, Section 114C high-value blocks, and sealing powers on persistent non-filers and fake invoicing — not on the smallest compliant trader.</p>
-          </div>
-        </div>
-        <div class="footer"><span>Path: simplify → reward → digitise → protect → punish the leak, not the compliant</span><span></span></div>
-      </section>
-
-      <!-- 6 BENEFITS -->
-      <section class="slide">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">05 — Benefits</span>
-        </div>
-        <h2>Benefits if Pakistan actually does this</h2>
-        <div class="gold-rule"></div>
-        <div class="grid-2">
-          <div class="card">
-            <p class="tag">For the country</p>
-            <ul class="list">
-              <li><strong>More revenue without crushing the same 2.5 million people</strong> — a wider base funds schools, hospitals, water and defence without a new IMF squeeze every cycle.</li>
-              <li><strong>Lower fiscal deficit and less debt interest</strong> — FY2026 already showed what a primary surplus can do; a broader base makes it lasting.</li>
-              <li><strong>Cheaper electricity and fewer circular-debt patches</strong> because subsidies can be targeted, not sprayed.</li>
-              <li><strong>Better policy</strong> — you cannot plan industry, exports or cities if half of GDP is a rumour.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <p class="tag">For the citizen and the honest business</p>
-            <ul class="list">
-              <li><strong>Filer status / ATL:</strong> lowest withholding on property, cars, bank profit, dividends; refund of extra tax; ability to open normal bank accounts.</li>
-              <li><strong>Credit:</strong> documented sales are the passport to bank loans, export certification and government tenders.</li>
-              <li><strong>Fair competition:</strong> the shop that issues invoices stops losing to the shop that hides 40% of turnover.</li>
-              <li><strong>Dignity:</strong> a return is proof of contribution. It is also proof of income when you need a visa, a plot, or a court.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
-      </section>
-
-      <!-- 7 COMPLETE PICTURE — THE SLIDE THEY ASKED FOR -->
-      <section class="slide dark">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">06 — Complete Pakistan picture</span>
-        </div>
-        <h2 style="font-size:30px;">How we achieve this in Pakistan — benefits, punishments, and the cost of not doing it</h2>
-        <p style="opacity:.7; margin:8px 0 16px; font-size:15px;">One slide. Four answers. This is the civic choice in front of the country.</p>
-        <div class="grid-2" style="gap:14px; flex:1;">
-          <div class="card" style="padding:18px 20px;">
-            <p class="tag">A · How we achieve it</p>
-            <ul class="list" style="font-size:15px; gap:8px;">
-              <li>Every earner files; traders join Asaan Tax (1% turnover, min Rs 25,000) or the regular return.</li>
-              <li>Large retail / notified sectors live on FBR e-invoices and POS — no sale off-system.</li>
-              <li>Banks, land records, NADRA, customs and utilities talk to IRIS so lifestyle matches income.</li>
-              <li>The state cuts harassment, keeps rates predictable, and spends visibly so people see a return on tax.</li>
-              <li>Provinces document urban property and agricultural wealth instead of leaving the federal salaried class alone in the net.</li>
-            </ul>
-          </div>
-          <div class="card" style="padding:18px 20px;">
-            <p class="tag">B · Benefits if we do it</p>
-            <ul class="list" style="font-size:15px; gap:8px;">
-              <li>Wider tax base → room to lower rates on those already paying.</li>
-              <li>ATL benefits: cheaper withholding, refunds, cars, plots, bank accounts, tenders.</li>
-              <li>Banks can lend against real books; investment and jobs follow documentation.</li>
-              <li>State can fund education, health, water and climate without repeating debt crises.</li>
-              <li>Informal 35–40% of GDP slowly becomes countable, taxable, and financeable.</li>
-            </ul>
-          </div>
-          <div class="card" style="padding:18px 20px; background:rgba(155,44,44,.18); border-color:rgba(248,180,180,.25);">
-            <p class="tag">C · Punishment if one does not apply / if the law is applied</p>
-            <ul class="list" style="font-size:15px; gap:8px;">
-              <li><strong>Non-filer:</strong> 2–4× withholding on banks, property, cars, dividends; no ordinary new bank account; no refund.</li>
-              <li><strong>Late filer:</strong> daily default penalty + ATL surcharge (individuals Rs 25,000 in 2026-27) to get back on the list.</li>
-              <li><strong>Concealment / false particulars:</strong> penalty raised to <strong>Rs 1 million</strong> (Finance Bill 2026) plus tax evaded.</li>
-              <li><strong>No records on audit:</strong> Rs 100,000 / 200,000 / 300,000 by notice. Failure to withhold: Rs 500,000; company officers personally Rs 500,000.</li>
-              <li><strong>Section 114C</strong> (in law; gazette notification still pending): blocks cars over Rs 7m, homes over Rs 50m, commercial property over Rs 100m, securities over Rs 50m/year, cash out over Rs 100m/year unless resources are declared at 130% of the deal.</li>
-              <li>Persistent default: higher fines and power to <strong>seal business premises</strong>.</li>
-            </ul>
-          </div>
-          <div class="card" style="padding:18px 20px; background:rgba(201,162,39,.08);">
-            <p class="tag">D · Problems we face by not doing this</p>
-            <ul class="list" style="font-size:15px; gap:8px;">
-              <li>The documented minority is over-taxed; the undocumented majority is invisible — a justice failure, not only a fiscal one.</li>
-              <li>Every budget becomes an IMF negotiation because the base is too small for the state’s bills.</li>
-              <li>Cash, smuggling and benami property hide crime, terror finance and elite tax evasion in the same fog.</li>
-              <li>Honest businesses cannot compete; talent leaves; investment stays short-term and speculative.</li>
-              <li>No data means bad schools, leaking power, unplanned cities, and subsidies that never reach the poor they were meant for.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer"><span>The complete civic slide</span><span>Apply · Benefit · Or pay the penalty — and the country pays either way</span></div>
-      </section>
-
-      <!-- 8 PUNISHMENT DETAIL -->
-      <section class="slide">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">07 — Punishment if applied</span>
-        </div>
-        <h2>What the law does to you if you do not apply</h2>
-        <div class="gold-rule"></div>
-        <table>
-          <thead>
-            <tr>
-              <th>If you…</th>
-              <th>Status</th>
-              <th>What hits you</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>File on time and stay truthful</td>
-              <td><strong>Active filer (ATL)</strong></td>
-              <td>Lowest withholding; refunds allowed; full economic access; still must keep books.</td>
-            </tr>
-            <tr>
-              <td>File after the deadline</td>
-              <td><strong>Late filer</strong></td>
-              <td>Daily penalty (Finance Bill 2026 proposed a sharp increase, including Rs 2,000/day in some sales-tax late cases). ATL surcharge to return to the list (Rs 25,000 for individuals, 2026-27).</td>
-            </tr>
-            <tr>
-              <td>Never file</td>
-              <td><strong>Non-filer</strong></td>
-              <td>2–4× withholding on almost every documented transaction. New bank accounts largely blocked. No refund. Highest friction on property and vehicles.</td>
-            </tr>
-            <tr>
-              <td>Hide income or file false details</td>
-              <td><strong>Evader</strong></td>
-              <td>Penalty up to <strong>Rs 1,000,000</strong> plus the tax evaded. Repeat behaviour can go higher. Criminal provisions remain available for tax fraud.</td>
-            </tr>
-            <tr>
-              <td>Ignore audit notices / don’t withhold</td>
-              <td><strong>Defaulter</strong></td>
-              <td>Record penalties Rs 100k–300k; withholding failure Rs 500,000; company principals personally Rs 500,000. Premises can be sealed after continued default.</td>
-            </tr>
-            <tr>
-              <td>Try a large lifestyle with no declared wealth</td>
-              <td><strong>Ineligible person (s.114C)</strong></td>
-              <td>Once notified: cannot book a car above Rs 7m, a house above Rs 50m FMV, commercial property above Rs 100m, heavy securities, or pull Rs 100m+ cash in a year without 130% declared resources.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="margin-top:14px; font-size:14px; color:var(--muted);">Note: Section 114C is already in the Income Tax Ordinance (Finance Act 2025) but, as of August 2026 reporting, the federal gazette date and operational rules were still pending. Withholding and ATL disadvantages already apply.</p>
-        <div class="footer"><span>Finance Bill 2026 · Income Tax Ordinance 2001 · FBR ATL rules</span><span></span></div>
-      </section>
-
-      <!-- 9 PROBLEMS -->
-      <section class="slide dark">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">08 — Cost of not doing this</span>
-        </div>
-        <h2>Problems we are already facing by not doing this</h2>
-        <div class="gold-rule"></div>
-        <div class="grid-3" style="flex:1;">
-          <div class="card">
-            <p class="big-number">01</p>
-            <h3 style="margin:10px 0;">A state that cannot pay for itself</h3>
-            <p style="margin-top:8px; opacity:.85;">Interest on old debt eats the budget. Development is residual. We borrow to run the government because too few people are on the books. That is why every “record collection” still feels like a crisis.</p>
-          </div>
-          <div class="card">
-            <p class="big-number">02</p>
-            <h3 style="margin:10px 0;">The salaried class as a hostage</h3>
-            <p style="margin-top:8px; opacity:.85;">Tax is deducted from the salary slip before the employee sees it. Retail, wholesale, real-estate flipping and cash professions often pay nothing comparable. People learn that honesty is expensive.</p>
-          </div>
-          <div class="card">
-            <p class="big-number">03</p>
-            <h3 style="margin:10px 0;">Fake competition</h3>
-            <p style="margin-top:8px; opacity:.85;">A documented factory paying payroll, GST and power at industrial rates cannot beat a cash competitor. Industry thins out. Imports and trading fill the gap. Jobs that should exist never appear.</p>
-          </div>
-          <div class="card">
-            <p class="big-number">04</p>
-            <h3 style="margin:10px 0;">Black money has a home</h3>
-            <p style="margin-top:8px; opacity:.85;">Undocumented plots, prize bonds, cash and under-invoiced imports are where corruption, smuggling and tax evasion hide. Without trails, courts and banks are guessing.</p>
-          </div>
-          <div class="card">
-            <p class="big-number">05</p>
-            <h3 style="margin:10px 0;">No credit, no scale</h3>
-            <p style="margin-top:8px; opacity:.85;">Banks will not lend against a notebook in a drawer. So firms stay small, families stay in the informal loop, and the country stays a trading economy instead of a producing one.</p>
-          </div>
-          <div class="card">
-            <p class="big-number">06</p>
-            <h3 style="margin:10px 0;">Trust collapse</h3>
-            <p style="margin-top:8px; opacity:.85;">Citizens say: “Why should I pay if the elite does not, and if my tax disappears?” The state says: “Why should I improve service if nobody pays?” Both are waiting. Both are wrong to wait.</p>
-          </div>
-        </div>
-        <div class="footer"><span>Not doing documentation is not neutral. It is a daily policy choice with victims.</span><span></span></div>
-      </section>
-
-      <!-- 10 WHO PAYS -->
-      <section class="slide">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">09 — Fairness</span>
-        </div>
-        <h2>Who pays today — and who should</h2>
-        <div class="gold-rule"></div>
-        <div class="grid-2" style="flex:1;">
-          <div class="card">
-            <p class="tag">Over-documented</p>
-            <h3>Salaried employees, large companies, importers at the port, formal banks</h3>
-            <ul class="list" style="margin-top:14px;">
-              <li>Cannot hide: withholding is automatic.</li>
-              <li>Face audits, payroll tax, sales tax, WWF/WPPF, and rising rates whenever the deficit yawns.</li>
-              <li>This is why “tax culture” speeches sound empty to a teacher or a software employee.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <p class="tag">Under-documented</p>
-            <h3>Cash retail, parts of wholesale, speculators, some professional cash practices, much real-estate gain</h3>
-            <ul class="list" style="margin-top:14px;">
-              <li>About 4.2–4.4 million traders are the Asaan Tax target — most still outside a serious return.</li>
-              <li>High-value cars and houses are often bought without income that matches the price.</li>
-              <li>Agriculture income is provincial; urban agri-wealth and lifestyle often escape both federation and province.</li>
-            </ul>
-          </div>
-        </div>
-        <p class="lead" style="margin-top:16px;">A just policy does not hunt the easy target. It documents the large leak, simplifies the small trader, and then lowers rates for everyone who stayed honest.</p>
-        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
-      </section>
-
-      <!-- 11 12 MONTH PATH -->
-      <section class="slide">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">10 — Practical path</span>
-        </div>
-        <h2>A 12-month path that can actually work</h2>
-        <div class="gold-rule"></div>
-        <div class="grid-3" style="flex:1;">
-          <div class="card">
-            <p class="tag">Citizens</p>
-            <h3>File this year. Stay on ATL.</h3>
-            <ul class="list" style="margin-top:12px; font-size:16px;">
-              <li>Create an IRIS account / FBR app login.</li>
-              <li>File even if income is modest — filer status is an asset.</li>
-              <li>Keep bank trails for rent, fees, and large buys.</li>
-              <li>Do not “save” tax by staying a non-filer: the extra withholding is usually larger than the tax due.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <p class="tag">Traders &amp; SMEs</p>
-            <h3>Pick the simple door, then grow.</h3>
-            <ul class="list" style="margin-top:12px; font-size:16px;">
-              <li>If turnover ≤ Rs 200m: Fixed Tax Asaan Scheme — 1% of sales, minimum Rs 25,000, no routine POS/audit.</li>
-              <li>Keep a basic sales and purchase book anyway. Under-declaring now is a future raid.</li>
-              <li>If you scale past the scheme, integrate e-invoicing before FBR forces it.</li>
-            </ul>
-          </div>
-          <div class="card">
-            <p class="tag">The state</p>
-            <h3>Stop repeating Tajir Dost.</h3>
-            <ul class="list" style="margin-top:12px; font-size:16px;">
-              <li>Honour the no-harassment promise on scheme shops.</li>
-              <li>Notify Section 114C with clear rules — then apply it to luxury leaks, not kiryana stores.</li>
-              <li>Publish where the extra rupee goes: schools, water, local hospitals.</li>
-              <li>Match property, cars and electricity with returns. Quiet data beats noisy raids.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer"><span>A Documented Pakistan</span><span></span></div>
-      </section>
-
-      <!-- 12 DO VS DONT -->
-      <section class="slide dark" style="padding:0;">
-        <div class="compare">
-          <div class="do">
-            <p class="kicker">If we do this</p>
-            <h2 style="margin:16px 0 20px; font-size:34px;">A country that can see itself</h2>
-            <ul class="list">
-              <li>Tax base expands; rates on the salaried can be discussed downward in good faith.</li>
-              <li>IMF programmes become shorter and less humiliating because the numbers add up.</li>
-              <li>Banks finance factories, not only plots.</li>
-              <li>Luxury that cannot be explained is blocked at the registration desk.</li>
-              <li>A teacher and a trader stand in the same civic line: both documented, both served.</li>
-            </ul>
-          </div>
-          <div class="dont">
-            <p class="kicker">If we do not</p>
-            <h2 style="margin:16px 0 20px; font-size:34px;">The same cycle, more expensive</h2>
-            <ul class="list">
-              <li>Another budget of higher penalties on the same trapped base.</li>
-              <li>Capital and talent leave; remaining businesses stay informal on purpose.</li>
-              <li>Debt interest remains the largest “development” line.</li>
-              <li>Smog, water, schools and hospitals stay underfunded while cash houses rise in DHA.</li>
-              <li>The next generation inherits a state that still cannot count its own economy.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- 13 CLOSE -->
-      <section class="slide dark">
-        <div class="topbar">
-          <div class="brand"><span class="mark"></span> Pakistan Policy Briefing</div>
-          <span class="kicker">Close</span>
-        </div>
-        <p class="quote">Documentation is not a tax. It is the decision that Pakistan will stop guessing — and stop punishing only the people it can already see.</p>
-        <div class="gold-rule"></div>
-        <div class="grid-3">
+        <div class="top"><div class="brand">Yellow bin · Gelber Sack / Gelbe Tonne</div><div class="chip">04 / 18</div></div>
+        <div class="bin-head">
+          <svg class="bin-ico" viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="8" rx="2" fill="#F9A825"/><rect x="14" y="22" width="36" height="34" rx="3" fill="#FBC02D"/><rect x="20" y="8" width="24" height="8" rx="2" fill="#FFF59D"/></svg>
           <div>
-            <p class="tag">Remember</p>
-            <p>~2.5 million active filers cannot finance 240 million lives. Broaden the base, then lower the rate.</p>
-          </div>
-          <div>
-            <p class="tag">Apply</p>
-            <p>File. Join Asaan Tax if you trade small. Keep books. The penalty for staying invisible is already more expensive than the tax.</p>
-          </div>
-          <div>
-            <p class="tag">Demand</p>
-            <p>Enforcement on the big leak, protection for the honest, and public proof that the rupee built a school, not a scandal.</p>
+            <h2 style="color:#F9A825;">Yellow Bin / Yellow Bag — Lightweight Packaging</h2>
+            <p class="muted">Plastic, metal, and composite packaging — empty, not sparkling-clean.</p>
           </div>
         </div>
-        <p class="sources" style="margin-top:auto; padding-top:28px; color:rgba(246,241,230,.45);">
-          Figures and legal notes drawn from: Finance Division Monthly Economic Update (July 2026); FBR collection and filer briefings (FY2025–FY2026); The News Budget FY27 analysis (active filers / informal share); Dawn and PKRevenue reporting on Finance Bill 2026 penalties; Income Tax Ordinance s.114C (Finance Act 2025); Fixed Tax Asaan Scheme announcements (June 2026). Penalty amounts and notification dates can change — verify on FBR / gazette before relying for compliance.
-        </p>
-        <div class="footer"><span>A Documented Pakistan</span><span>End of briefing</span></div>
+        <div class="row c4" style="margin-top:4px;">
+          <div class="card" style="text-align:center;"><div style="font-size:28px;">🥤</div><h3>Yogurt cups</h3><p class="muted">Plastic packaging</p></div>
+          <div class="card" style="text-align:center;"><div style="font-size:28px;">🥫</div><h3>Tin cans</h3><p class="muted">Metal packaging</p></div>
+          <div class="card" style="text-align:center;"><div style="font-size:28px;">✨</div><h3>Aluminium foil</h3><p class="muted">If mostly clean</p></div>
+          <div class="card" style="text-align:center;"><div style="font-size:28px;">🥛</div><h3>TetraPak / milk</h3><p class="muted">Composite cartons</p></div>
+        </div>
+        <div class="row c2" style="margin-top:12px; grid-template-columns: 1.15fr .85fr; flex:1; min-height:0;">
+          <div class="card">
+            <p class="tag">Processing rule — “spoon-clean”</p>
+            <p>Empty the yogurt. Scrape the can. <strong>Do not waste litres of water rinsing.</strong> A spoon-clean pack recycles; a pack still full of food contaminates the whole yellow stream.</p>
+            <div class="note" style="margin-top:12px;">Pfand bottles and cans with the DPG logo do <em>not</em> belong here — they go back to the supermarket machine.</div>
+          </div>
+          <div class="ph"><img class="photo" src="assets/yellow-bin-packaging.jpg" alt="Yellow bin with packaging" /><span class="cap">Empty packaging only</span></div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 5 BROWN -->
+      <section class="slide">
+        <div class="top"><div class="brand">Brown bin · Biogut / Biotonne</div><div class="chip">05 / 18</div></div>
+        <div class="bin-head">
+          <svg class="bin-ico" viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="8" rx="2" fill="#5D4037"/><rect x="14" y="22" width="36" height="34" rx="3" fill="#6D4C41"/><rect x="20" y="8" width="24" height="8" rx="2" fill="#A1887F"/></svg>
+          <div>
+            <h2 style="color:var(--brown-bin);">Brown / Organic Bin — the bio-energy loop</h2>
+            <p class="muted">Kitchen and garden leftovers become compost and biogas — if no plastic enters.</p>
+          </div>
+        </div>
+        <div class="row c3" style="flex:1; min-height:0;">
+          <div class="card">
+            <p class="tag" style="color:var(--brown-bin);">Allowed</p>
+            <ul class="ok">
+              <li><span class="dot">✓</span> Fruit &amp; vegetable peels</li>
+              <li><span class="dot">✓</span> Food scraps</li>
+              <li><span class="dot">✓</span> Coffee grounds &amp; tea bags</li>
+              <li><span class="dot">✓</span> Garden trimmings</li>
+            </ul>
+          </div>
+          <div class="card warn">
+            <p class="tag" style="color:var(--danger);">Strict rule</p>
+            <p style="font-weight:700; margin:6px 0;">Absolutely NO plastic bags.</p>
+            <p>Even bags labelled “compostable / bio-plastic” are forbidden in most German Biotonne systems. Wrap scraps in <strong>newspaper or paper bags</strong> only.</p>
+          </div>
+          <div class="card" style="background:var(--green); color:#fff;">
+            <p class="label" style="color:#C8E6C9;">Environmental value</p>
+            <p class="stat" style="color:#FBC02D; font-size:28px; margin:8px 0;">Loop</p>
+            <p>Kitchen → Biotonne → municipal composting + biogas power. Organic waste is fuel and fertiliser, not landfill stink.</p>
+          </div>
+        </div>
+        <div class="ph" style="height:130px; margin-top:12px;"><img class="photo" src="assets/brown-bin-organic.jpg" alt="Organic waste in a paper bag by a brown bin" /></div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 6 GRAY -->
+      <section class="slide">
+        <div class="top"><div class="brand">Gray bin · Restmüll</div><div class="chip">06 / 18</div></div>
+        <div class="bin-head">
+          <svg class="bin-ico" viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="8" rx="2" fill="#37474F"/><rect x="14" y="22" width="36" height="34" rx="3" fill="#455A64"/><rect x="20" y="8" width="24" height="8" rx="2" fill="#90A4AE"/></svg>
+          <div>
+            <h2 style="color:var(--gray-bin);">Black / Gray Bin — residual waste only</h2>
+            <p class="muted">What cannot be recycled. Success = this bin stays almost empty.</p>
+          </div>
+        </div>
+        <div class="row c2" style="flex:1; min-height:0;">
+          <div class="card">
+            <p class="tag">Allowed (non-recyclables)</p>
+            <div class="row c2" style="margin-top:8px;">
+              <ul class="ok">
+                <li><span class="dot">•</span> Vacuum bags</li>
+                <li><span class="dot">•</span> Ash &amp; cigarette butts</li>
+                <li><span class="dot">•</span> Diapers</li>
+              </ul>
+              <ul class="ok">
+                <li><span class="dot">•</span> Broken ceramics</li>
+                <li><span class="dot">•</span> Sanitation items</li>
+                <li><span class="dot">•</span> Dirty, unrecyclable mix</li>
+              </ul>
+            </div>
+            <div class="note" style="margin-top:14px;">Golden rule: if it belongs in Blue, Yellow, Brown, Glass, or Pfand — it does <strong>not</strong> belong here.</div>
+          </div>
+          <div class="card" style="background:#263238; color:#fff;">
+            <p class="label" style="color:#B0BEC5;">Final destination</p>
+            <h3 style="margin:8px 0 8px; color:#FBC02D;">Incineration → district heating</h3>
+            <p>Restmüll is burned in controlled plants. Heat warms homes. It is still the most expensive and least circular path — so Germans treat a full gray bin as a sorting failure, not a normal week.</p>
+            <div class="ph" style="height:140px; margin-top:12px;"><img class="photo" src="assets/gray-bin-residual.jpg" alt="Gray residual waste bin" /></div>
+          </div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 7 GLASS -->
+      <section class="slide">
+        <div class="top"><div class="brand">Glascontainer</div><div class="chip">07 / 18</div></div>
+        <h2>Street glass igloos — sort by colour, not by brand</h2>
+        <div class="row c3" style="margin-top:12px;">
+          <div class="card" style="border-top:6px solid #ECEFF1;">
+            <p class="label">Column 1</p>
+            <h3>White glass · Weißglas</h3>
+            <p class="muted" style="margin-top:6px;">Clear bottles and jars. Colour contamination ruins the melt.</p>
+          </div>
+          <div class="card" style="border-top:6px solid #2E7D32;">
+            <p class="label">Column 2</p>
+            <h3>Green glass · Grünglas</h3>
+            <p class="muted" style="margin-top:6px;">Green plus blue and other mixed colours in most cities.</p>
+          </div>
+          <div class="card" style="border-top:6px solid #5D4037;">
+            <p class="label">Column 3</p>
+            <h3>Brown glass · Braunglas</h3>
+            <p class="muted" style="margin-top:6px;">Brown beer and medicine-style bottles (household only).</p>
+          </div>
+        </div>
+        <div class="row c2" style="margin-top:12px; flex:1; min-height:0; grid-template-columns: 1.1fr .9fr;">
+          <div class="card">
+            <p class="tag">Household vs special glass</p>
+            <ul class="ok" style="margin-top:8px;">
+              <li><span class="dot">✓</span> Jam jars, sauce bottles, ordinary drink glass → igloo</li>
+              <li><span class="dot">✕</span> Medical / pharma vials → Restmüll or hazardous stream</li>
+              <li><span class="dot">✕</span> Heat-resistant cookware (Pyrex) → Restmüll — different melting point</li>
+            </ul>
+            <div class="note" style="margin-top:12px;">Quiet hours: drop glass only on weekdays in daytime. No Sundays, no nights. Neighbours hear every bottle.</div>
+          </div>
+          <div class="ph"><img class="photo" src="assets/glass-igloos.jpg" alt="White, green and brown glass recycling igloos" /><span class="cap">Weiß · Grün · Braun</span></div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 8 PFAND -->
+      <section class="slide">
+        <div class="top"><div class="brand">Pfand · deposit-refund</div><div class="chip">08 / 18</div></div>
+        <h2>The Pfand loop — 98% of bottles come home</h2>
+        <div class="flow" style="margin:12px 0;">
+          <div class="node"><p class="n">1</p><h3>Customer</h3><p class="muted">Pays deposit at checkout</p></div>
+          <div class="arr">→</div>
+          <div class="node"><p class="n">2</p><h3>Use</h3><p class="muted">Drinks, keeps the bottle</p></div>
+          <div class="arr">→</div>
+          <div class="node"><p class="n">3</p><h3>Supermarket</h3><p class="muted">Pfandautomat slot</p></div>
+          <div class="arr">→</div>
+          <div class="node"><p class="n">4</p><h3>Cash back</h3><p class="muted">Voucher / refund</p></div>
+        </div>
+        <div class="row c2" style="flex:1; min-height:0;">
+          <div class="row" style="grid-template-rows:1fr 1fr;">
+            <div class="rate">
+              <p class="label" style="color:#BBDEFB;">Single-use · Einweg</p>
+              <p class="stat">€0.25</p>
+              <p>PET bottles &amp; cans with the DPG logo. High deposit = almost nobody litters a 25-cent bottle.</p>
+            </div>
+            <div class="card" style="background:var(--green); color:#fff;">
+              <p class="label" style="color:#C8E6C9;">Multi-use · Mehrweg</p>
+              <p class="stat" style="color:#FBC02D;">€0.08–€0.15</p>
+              <p>Heavy plastic or glass beer/water bottles, washed and refilled up to <strong>50 times</strong>.</p>
+            </div>
+          </div>
+          <div class="ph"><img class="photo" src="assets/pfandautomat.jpg" alt="Inserting a PET bottle into a reverse vending machine" /><span class="cap">Pfandautomat</span></div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 9 APARTMENTS -->
+      <section class="slide">
+        <div class="top"><div class="brand">Apartment buildings · shared duty</div><div class="chip">09 / 18</div></div>
+        <h2>One neighbour’s lazy sorting becomes everyone’s bill</h2>
+        <div class="row c2" style="flex:1; min-height:0; margin-top:12px; grid-template-columns: .9fr 1.1fr;">
+          <div class="ph"><img class="photo" src="assets/apartment-bins.jpg" alt="Shared apartment bin courtyard" /><span class="cap">Central bin yard</span></div>
+          <div class="row">
+            <div class="card">
+              <p class="tag">How it works</p>
+              <p>Multi-family houses share one bin courtyard. Collection is a building service, not a private hobby.</p>
+            </div>
+            <div class="card warn">
+              <p class="tag" style="color:var(--danger);">Shared responsibility</p>
+              <ul class="no">
+                <li><span class="dot">1</span> If 1 tenant mis-sorts, the municipality can charge higher “non-sorted” fees to the whole building.</li>
+                <li><span class="dot">2</span> Landlord spreads the cost through Nebenkosten — or warns the offending renter.</li>
+              </ul>
+            </div>
+            <div class="card" style="background:var(--navy); color:#fff;">
+              <p class="label" style="color:#90CAF9;">Citizen behaviour credit</p>
+              <p>Repeat violations damage the residential record, risk lease termination, or trigger municipal citations. Sorting is part of being a good tenant — like paying rent on time.</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 10 LAWS -->
+      <section class="slide">
+        <div class="top"><div class="brand">Monitoring · laws · fines</div><div class="chip">10 / 18</div></div>
+        <h2>The state watches the bin — and will leave it standing</h2>
+        <div class="row c2" style="flex:1; min-height:0; margin-top:12px;">
+          <div class="row">
+            <div class="card">
+              <p class="tag">Government mechanism</p>
+              <ul class="ok">
+                <li><span class="dot">•</span> Waste inspectors — Mülldetektive</li>
+                <li><span class="dot">•</span> Local Abfallkalender (pickup calendar by street)</li>
+                <li><span class="dot">•</span> Separate trucks per stream — paper truck will not take yellow</li>
+              </ul>
+            </div>
+            <div class="card">
+              <p class="tag">Collection rules</p>
+              <p>Wrong materials in the bin → workers leave a <strong>warning sticker</strong> and refuse collection until it is re-sorted. The smell in July is the real fine.</p>
+            </div>
+            <div class="rate">
+              <p class="label" style="color:#BBDEFB;">Illegal dumping · Sperrmüll / Wildmüll</p>
+              <p class="stat">€50 → €2,500<small>+</small></p>
+              <p>Range depends on the federal state and the volume dumped. Fly-tipping is not a shortcut; it is a ticket.</p>
+            </div>
+          </div>
+          <div class="ph"><img class="photo" src="assets/waste-truck.jpg" alt="Municipal waste collection truck in Germany" /><span class="cap">Dedicated collection</span></div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 11 JOURNEY -->
+      <section class="slide">
+        <div class="top"><div class="brand">Waste journey</div><div class="chip">11 / 18</div></div>
+        <h2>Five steps from kitchen to circular re-entry</h2>
+        <div class="row c5" style="margin-top:18px; flex:1;">
+          <div class="step"><div class="n">1</div><h3>Source separation</h3><p class="muted" style="margin-top:6px;">Kitchen caddies: paper, packaging, organic, residual. The factory starts at the chopping board.</p></div>
+          <div class="step" style="border-top-color:var(--navy);"><div class="n">2</div><h3>Bin placement</h3><p class="muted" style="margin-top:6px;">Curbside on the Abfallkalender day only. Wrong day = full bin and a missed truck.</p></div>
+          <div class="step" style="border-top-color:var(--yellow);"><div class="n">3</div><h3>Specialized pickup</h3><p class="muted" style="margin-top:6px;">Separate dedicated trucks per stream. No mixed “one lorry does all.”</p></div>
+          <div class="step" style="border-top-color:var(--blue-bin);"><div class="n">4</div><h3>Sorting &amp; Pfand</h3><p class="muted" style="margin-top:6px;">Optical sorting plants + reverse vending. Machines catch what hands missed.</p></div>
+          <div class="step" style="border-top-color:var(--brown-bin);"><div class="n">5</div><h3>Circular re-entry</h3><p class="muted" style="margin-top:6px;">Compost, plastic pellets, glass remelt, bottle refill. Waste becomes inventory.</p></div>
+        </div>
+        <div class="note">If step 1 fails, steps 3–5 become expensive theatre. Pakistan’s work begins in the kitchen, not at the landfill gate.</div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 12 PAKISTAN REALITY -->
+      <section class="slide">
+        <div class="top"><div class="brand">Pakistan · current reality</div><div class="chip">12 / 18</div></div>
+        <h2>We already collect — we just collect it mixed, late, and burning</h2>
+        <div class="row c2" style="flex:1; min-height:0; margin-top:12px; grid-template-columns: 1.05fr .95fr;">
+          <div class="row c2">
+            <div class="card warn"><p class="tag" style="color:var(--danger);">Mixed dumping</p><p>Households bag everything together. Value of plastic and glass dies on contact with wet waste.</p></div>
+            <div class="card warn"><p class="tag" style="color:var(--danger);">Landfills &amp; nullahs</p><p>Unorganized dumps and drain blockages. Monsoon turns trash into urban flooding.</p></div>
+            <div class="card warn"><p class="tag" style="color:var(--danger);">Open burning</p><p>Neighbourhoods burn piles. Toxic smoke is a public-health invoice we pay in hospitals.</p></div>
+            <div class="card warn"><p class="tag" style="color:var(--danger);">Informal risk</p><p>Kabbadiwalas and waste pickers work without PPE in contaminated heaps — the green jobs we have, treated as invisible.</p></div>
+          </div>
+          <div class="ph"><img class="photo" src="assets/pakistan-waste-contrast.jpg" alt="Pakistan waste clutter versus a cleaner street" /><span class="cap">Contamination = lost recycling</span></div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 13 ADAPT -->
+      <section class="slide">
+        <div class="top"><div class="brand">How Pakistan achieves this</div><div class="chip">13 / 18</div></div>
+        <h2>Four phases — do not copy Germany’s 4 bins on day one</h2>
+        <div class="row c4" style="flex:1; margin-top:14px;">
+          <div class="step" style="text-align:left;">
+            <div class="n">1</div>
+            <h3>Two-bin home</h3>
+            <p class="muted" style="margin-top:8px;"><strong style="color:var(--green);">Green</strong> = organic / wet.<br><strong style="color:var(--navy);">Blue</strong> = dry recyclables (plastic, paper, metal, glass).</p>
+            <p class="muted" style="margin-top:8px;">This is Mülltrennung at Pakistani scale. Master two streams before four.</p>
+          </div>
+          <div class="step" style="text-align:left; border-top-color:var(--navy);">
+            <div class="n">2</div>
+            <h3>Community hubs</h3>
+            <p class="muted" style="margin-top:8px;">Neighbourhood collection points — Lyari / Karachi-style pilots — where sorted bags meet a scheduled pickup, not a random heap.</p>
+          </div>
+          <div class="step" style="text-align:left; border-top-color:var(--yellow);">
+            <div class="n">3</div>
+            <h3>Formalize kabbadi</h3>
+            <p class="muted" style="margin-top:8px;">Bring scrap dealers into official city recycling centres: ID, fair rates, PPE, clean buy-back. They are already our sorting plants.</p>
+          </div>
+          <div class="step" style="text-align:left; border-top-color:var(--brown-bin);">
+            <div class="n">4</div>
+            <h3>Local Pfand</h3>
+            <p class="muted" style="margin-top:8px;">Small cash refund for PET bottles at kiryana / grocery stores. Even Rs 5–10 per bottle trains the same muscle as €0.25.</p>
+          </div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 14 BENEFITS -->
+      <section class="slide">
+        <div class="top"><div class="brand">Benefits if we apply this</div><div class="chip">14 / 18</div></div>
+        <h2>What Pakistan gains when sorting becomes normal</h2>
+        <div class="row c2" style="flex:1; margin-top:14px;">
+          <div class="card" style="border-top:6px solid var(--green);">
+            <p class="tag">Environmental</p>
+            <ul class="ok">
+              <li><span class="dot">✓</span> Cleaner streets and parks</li>
+              <li><span class="dot">✓</span> Unclogged drains → less urban monsoon flooding</li>
+              <li><span class="dot">✓</span> Less open burning → cleaner air</li>
+            </ul>
+          </div>
+          <div class="card" style="border-top:6px solid var(--navy);">
+            <p class="tag">Economic</p>
+            <ul class="ok">
+              <li><span class="dot">✓</span> Jobs in formal sorting units</li>
+              <li><span class="dot">✓</span> Compost revenue for agriculture</li>
+              <li><span class="dot">✓</span> Recyclate sales instead of imported pellets</li>
+            </ul>
+          </div>
+          <div class="card" style="border-top:6px solid var(--yellow);">
+            <p class="tag">Health</p>
+            <ul class="ok">
+              <li><span class="dot">✓</span> Fewer vector diseases (dengue, malaria)</li>
+              <li><span class="dot">✓</span> Less toxic fume exposure</li>
+              <li><span class="dot">✓</span> Safer work for waste pickers with PPE</li>
+            </ul>
+          </div>
+          <div class="card" style="border-top:6px solid var(--brown-bin);">
+            <p class="tag">Energy</p>
+            <ul class="ok">
+              <li><span class="dot">✓</span> Biogas / waste-to-energy from organic biomass</li>
+              <li><span class="dot">✓</span> Lower landfill methane</li>
+              <li><span class="dot">✓</span> District-scale organic fuel, German-style</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 15 CONSEQUENCES -->
+      <section class="slide">
+        <div class="top"><div class="brand">If we do not apply this</div><div class="chip">15 / 18</div></div>
+        <h2 style="color:var(--danger);">The punishment of not sorting is already here</h2>
+        <div class="row c2" style="flex:1; margin-top:14px;">
+          <div class="card warn">
+            <p class="tag" style="color:var(--danger);">Monsoon flooding</p>
+            <p>Polythene and mixed trash jam drains. Cities drown on 40mm of rain because gutters are landfills with a lid.</p>
+          </div>
+          <div class="card warn">
+            <p class="tag" style="color:var(--danger);">Soil &amp; groundwater</p>
+            <p>Open dumps leach into wells and fields. Contamination is slow, then permanent.</p>
+          </div>
+          <div class="card warn">
+            <p class="tag" style="color:var(--danger);">Health budget</p>
+            <p>Dengue wards, asthma, diarrhoea — sanitation failure is a hospital invoice the poor pay first.</p>
+          </div>
+          <div class="card warn">
+            <p class="tag" style="color:var(--danger);">Land value &amp; tourism</p>
+            <p>Streets of burning heaps destroy neighbourhood prices and any claim to “visit Pakistan.”</p>
+          </div>
+        </div>
+        <div class="rate" style="margin-top:12px;">
+          Germany’s fine is €50–€2,500 on a ticket. Pakistan’s fine is flooded homes, dengue, and a next generation that thinks filth is normal. <strong>Not doing this is the more expensive punishment.</strong>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 16 LAWS PK -->
+      <section class="slide">
+        <div class="top"><div class="brand">Pakistan policy · fines &amp; rewards</div><div class="chip">16 / 18</div></div>
+        <h2>Enforcement on one side, incentives on the other</h2>
+        <div class="row c2" style="flex:1; margin-top:14px;">
+          <div class="card" style="background:#B71C1C; color:#fff;">
+            <p class="label" style="color:#FFCDD2;">Penalties if the rule is applied</p>
+            <h3 style="margin:8px 0 10px; color:#FBC02D;">Fines for mixed dumping &amp; litter</h3>
+            <ul class="ok">
+              <li><span class="dot" style="background:#FBC02D; color:#B71C1C;">1</span> Direct fines on commercial markets that sweep mixed waste into the street or nullah.</li>
+              <li><span class="dot" style="background:#FBC02D; color:#B71C1C;">2</span> Household citations for dumping bags in public plots / drains.</li>
+              <li><span class="dot" style="background:#FBC02D; color:#B71C1C;">3</span> Repeat building-level fees (German Nebenkosten logic) when a lane keeps mixing streams.</li>
+              <li><span class="dot" style="background:#FBC02D; color:#B71C1C;">4</span> Refusal to collect unsorted commercial bins until they are separated — the sticker method.</li>
+            </ul>
+          </div>
+          <div class="card" style="background:var(--green); color:#fff;">
+            <p class="label" style="color:#C8E6C9;">Incentives if a community applies</p>
+            <h3 style="margin:8px 0 10px; color:#FBC02D;">Rebates, pride, and curriculum</h3>
+            <ul class="ok">
+              <li><span class="dot" style="background:#FBC02D; color:var(--green);">1</span> Utility-bill discounts or local tax rebates for neighbourhoods that hit recycling targets.</li>
+              <li><span class="dot" style="background:#FBC02D; color:var(--green);">2</span> Official buy-back rates at formal kabbadi centres — cash for clean PET, like Pfand.</li>
+              <li><span class="dot" style="background:#FBC02D; color:var(--green);">3</span> School sorting drills in every Ring Green club and board curriculum.</li>
+              <li><span class="dot" style="background:#FBC02D; color:var(--green);">4</span> Volunteer hours counted as civic credit for youth programmes.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 17 YOUTH -->
+      <section class="slide">
+        <div class="top"><div class="brand">Action checklist · members</div><div class="chip">17 / 18</div></div>
+        <h2>Ring Green Pakistan — start this week, not after a by-law</h2>
+        <div class="row c2" style="flex:1; margin-top:14px;">
+          <div class="card">
+            <p class="n" style="margin:0 0 10px;">01</p>
+            <h3>Sort at home today</h3>
+            <p class="muted" style="margin-top:6px;">Two bags: organic scraps vs dry plastics/paper/metal. Teach the cook and the youngest sibling the same rule.</p>
+          </div>
+          <div class="card">
+            <p class="n" style="margin:0 0 10px;">02</p>
+            <h3>Protect the drain</h3>
+            <p class="muted" style="margin-top:6px;">No wrapper in the gali nala. Educate the street: a blocked drain is a shared flood, not a sweeper’s problem.</p>
+          </div>
+          <div class="card">
+            <p class="n" style="margin:0 0 10px;">03</p>
+            <h3>Ask for bins</h3>
+            <p class="muted" style="margin-top:6px;">Advocate UC / municipal colour bins at the chowk and the school gate. Take photos. Follow up.</p>
+          </div>
+          <div class="card">
+            <p class="n" style="margin:0 0 10px;">04</p>
+            <h3>Show up</h3>
+            <p class="muted" style="margin-top:6px;">Join neighbourhood cleanup drives. Formalize one kabbadi contact as your lane’s buy-back point.</p>
+          </div>
+        </div>
+        <div class="note">Germany’s system is culture plus law. Culture is the part Ring Green members can ship this month.</div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span></span></div>
+      </section>
+
+      <!-- 18 CLOSE -->
+      <section class="slide" style="padding:18px;">
+        <div class="hero">
+          <img src="assets/green-pakistan-future.jpg" alt="Clean green Pakistan community" />
+          <div class="veil"></div>
+          <div class="copy">
+            <p class="pill" style="background:rgba(251,192,45,.2); color:#FBC02D; width:max-content;">Ring Green Pakistan</p>
+            <h1 style="font-size:36px; max-width:18ch; margin:12px 0 10px; color:#fff;">Building a sustainable future</h1>
+            <p style="max-width:40ch; font-size:18px; color:#E8F5E9;">Small daily actions lead to country-wide transformation. Let’s make Pakistan clean and green.</p>
+            <div class="row c3" style="margin-top:auto; max-width:900px;">
+              <div class="card" style="background:rgba(255,255,255,.12); color:#fff; border:0;">
+                <p class="label" style="color:#FBC02D;">Q&amp;A</p>
+                <p style="font-weight:700;">Questions from the floor — bins, Pfand, and your gali pilot</p>
+              </div>
+              <div class="card" style="background:rgba(255,255,255,.12); color:#fff; border:0;">
+                <p class="label" style="color:#FBC02D;">Connect</p>
+                <p style="font-weight:700;">@RingGreenPakistan · session notes in the group</p>
+              </div>
+              <div class="card" style="background:rgba(255,255,255,.12); color:#fff; border:0;">
+                <p class="label" style="color:#FBC02D;">Thank you</p>
+                <p style="font-weight:700;">4th Session · Mülltrennung &amp; Pfand</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span>Ring Green Pakistan · 4th Session</span><span>18 / 18</span></div>
       </section>
 
     </div>
-    <div class="progress"><span id="bar"></span></div>
+    <div class="progress"><i id="bar"></i></div>
   </div>
   <script>
     const slides = [...document.querySelectorAll('.slide')];
@@ -752,27 +655,17 @@
       i = (n + slides.length) % slides.length;
       slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
       bar.style.width = ((i + 1) / slides.length * 100) + '%';
-      document.querySelectorAll('.footer span:last-child').forEach((el, idx) => {
-        if (el.closest('.slide') && !el.textContent.includes('End') && !el.textContent.includes('Apply')) {
-          /* keep custom footers */
-        }
-      });
       slides.forEach((s, idx) => {
         const f = s.querySelector('.footer span:last-child');
-        if (f && f.textContent === '') f.textContent = String(idx + 1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+        if (f && (f.textContent === '' || /^\d{2} \/ 18$/.test(f.textContent))) {
+          f.textContent = String(idx + 1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+        }
       });
     }
-    slides.forEach((s, idx) => {
-      const f = s.querySelector('.footer span:last-child');
-      if (f && f.textContent === '') f.textContent = String(idx + 1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
-    });
     show(0);
-    function next() { show(i + 1); }
-    function prev() { show(i - 1); }
-    document.getElementById('frame').addEventListener('click', (e) => {
-      if (e.target.closest('a')) return;
-      next();
-    });
+    const next = () => show(i + 1);
+    const prev = () => show(i - 1);
+    document.getElementById('frame').addEventListener('click', (e) => { if (!e.target.closest('a')) next(); });
     window.addEventListener('keydown', (e) => {
       if (['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(e.key)) { e.preventDefault(); next(); }
       if (['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
